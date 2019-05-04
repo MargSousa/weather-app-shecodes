@@ -1,0 +1,9 @@
+.cities-title {
+  margin-bottom: 2px;
+}
+
+.cities-box {
+  border: solid 1px grey;
+  border-radius: 5px;
+  margin: 0 auto;
+}

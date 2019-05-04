@@ -1,0 +1,10 @@
+.location-title {
+  margin-bottom: 2px;
+}
+
+.location-box {
+  border: solid 1px grey;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 20px 30px 20px 30px;
+}
