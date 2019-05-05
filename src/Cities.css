@@ -1,11 +1,16 @@
+.cities-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .cities-title {
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .city-box {
   border: solid 1px grey;
   border-radius: 5px;
   margin: 0 auto;
-  margin: 20px;
+  margin: 0px 15px 0px 15px;
   padding: 10px;
 }

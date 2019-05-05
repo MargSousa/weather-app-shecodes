@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./WeeklyForecast.css";
 import SunnyIcon from "./images/weather_icons/Sunny.png";
+import CloudyIcon from "./images/weather_icons/Cloudy.png";
 
 export default class WeeklyForecast extends Component {
   render() {
@@ -18,27 +19,27 @@ export default class WeeklyForecast extends Component {
             </tr>
             <tr>
               <td>SUN</td>
-              <td> Icon</td>
+              <td><img className="weekly-icon" src={CloudyIcon} alt="Weather Icon"/></td>
               <td>22° / 13°C</td>
             </tr>
             <tr>
               <td>MON</td>
-              <td> Icon</td>
+              <td><img className="weekly-icon" src={SunnyIcon} alt="Weather Icon"/></td>
               <td>22° / 13°C</td>
             </tr>
             <tr>
               <td>TUE</td>
-              <td> Icon</td>
+              <td><img className="weekly-icon" src={CloudyIcon} alt="Weather Icon"/></td>
               <td>22° / 13°C</td>
             </tr>
             <tr>
               <td>WED</td>
-              <td> Icon</td>
+              <td><img className="weekly-icon" src={SunnyIcon} alt="Weather Icon"/></td>
               <td>22° / 13°C</td>
             </tr>
             <tr>
               <td>THU</td>
-              <td> Icon</td>
+              <td><img className="weekly-icon" src={CloudyIcon} alt="Weather Icon"/></td>
               <td>22° / 13°C</td>
             </tr>
           </tbody>

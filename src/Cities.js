@@ -4,9 +4,9 @@ import "./Cities.css";
 export default class Cities extends Component {
   render() {
     return (
-      <div>
-        <h4>myCities</h4>
-        <div>
+      <div className="cities-section">
+        <h4 className="cities-title">myCities</h4>
+        <div className="cities-section">
           <div className="row">
             <div className="col-sm city-box">
               <p>City One</p>
@@ -18,10 +18,6 @@ export default class Cities extends Component {
             </div>
             <div className="col-sm city-box">
               <p>City Three</p>
-              <br />
-            </div>
-            <div className="col-sm city-box">
-              <p>City Four</p>
               <br />
             </div>
             <div className="col-sm city-box">
