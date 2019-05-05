@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Location.css";
 import WeeklyForecast from "./WeeklyForecast";
+import SunnyIcon from "./images/weather_icons/Sunny.png";
 
 export default class Location extends Component {
   render() {
@@ -11,16 +12,20 @@ export default class Location extends Component {
           <div className="location-weather">
             <div className="row">
               <div className="col-sm-7">
-                <div className="row"><h4>Lisboa, Portugal</h4></div>
+                <div className="row">
+                  <h4>Lisboa, Portugal</h4>
+                </div>
                 <div className="row">
                   <div className="col-sm">
-                    <h5>15:15 PM</h5>
-                    <p>Sunrise: 06:50</p>
-                    <p>Sunset: 20:35</p>
+                    <h5 id="location-hour">15:15 PM</h5>
+                    <div className="sunrise-sunset">
+                      <p>Sunrise: 06:50</p>
+                      <p>Sunset: 20:35</p>
+                    </div>
                   </div>
                   <div className="col-sm">
-                    <p>Weather Icon</p>
-                    <p>Description</p>
+                    <img className="local-icon" src={SunnyIcon} alt="Weather Icon"/>
+                    <p>Sunny</p>
                     <p>Precipitation: 1%</p>
                     <p>Wind: 5 km/h</p>
                   </div>

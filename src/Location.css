@@ -1,10 +1,22 @@
 .location-title {
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .location-box {
   border: solid 1px grey;
   border-radius: 5px;
   margin: 0 auto;
-  padding: 20px 30px 20px 30px;
+  padding: 30px 40px 10px 40px;
+}
+
+.location-weather {
+  text-align: center;
+}
+
+#location-hour {
+  text-align: left;
+}
+
+.sunrise-sunset {
+  padding-top: 100px;
 }

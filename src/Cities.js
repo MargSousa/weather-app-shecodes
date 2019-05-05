@@ -6,8 +6,29 @@ export default class Cities extends Component {
     return (
       <div>
         <h4>myCities</h4>
-        <div className="cities-box">
-          <br />
+        <div>
+          <div className="row">
+            <div className="col-sm city-box">
+              <p>City One</p>
+              <br />
+            </div>
+            <div className="col-sm city-box">
+              <p>City Two</p>
+              <br />
+            </div>
+            <div className="col-sm city-box">
+              <p>City Three</p>
+              <br />
+            </div>
+            <div className="col-sm city-box">
+              <p>City Four</p>
+              <br />
+            </div>
+            <div className="col-sm city-box">
+              <p>Add new favourite</p>
+              <br />
+            </div>
+          </div>
         </div>
       </div>
     )

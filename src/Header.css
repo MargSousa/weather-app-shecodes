@@ -16,6 +16,12 @@
   padding-left: 5px;
 }
 
+.search-section {
+  text-align: center;
+  margin: 0 auto;
+  width: 400px;
+}
+
 .btn-info {
   margin-left: 2px;
 }
