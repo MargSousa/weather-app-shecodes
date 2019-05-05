@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Cities.css";
+import FavouriteCity from "./FavouriteCity";
 
 export default class Cities extends Component {
   render() {
@@ -9,20 +10,16 @@ export default class Cities extends Component {
         <div className="cities-section">
           <div className="row">
             <div className="col-sm city-box">
-              <p>City One</p>
-              <br />
+              <FavouriteCity />
             </div>
             <div className="col-sm city-box">
-              <p>City Two</p>
-              <br />
+              <FavouriteCity /> 
             </div>
             <div className="col-sm city-box">
-              <p>City Three</p>
-              <br />
+              <FavouriteCity />
             </div>
             <div className="col-sm city-box">
-              <p>Add new favourite</p>
-              <br />
+              <FavouriteCity /> 
             </div>
           </div>
         </div>
