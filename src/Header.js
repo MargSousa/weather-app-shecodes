@@ -18,7 +18,6 @@ export default class Header extends Component {
             <button type="button" className="btn btn-secondary btn-sm clearfix float-left">Current Location</button>
           </div>
         </div>  
-        <div className="search-time">Friday 15:17 PM</div>
       </div>
     )
   }

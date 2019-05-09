@@ -1,28 +1,46 @@
 .location-section {
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
 .location-title {
-  margin-bottom: 5px;
+  margin: 0px 0px 5px 10px;
 }
 
 .location-box {
-  border: solid 1px grey;
-  border-radius: 5px;
+  border: solid 2px rgb(199, 188, 188);
+  border-radius: 20px;
   margin: 0 auto;
-  padding: 20px;
+  text-align: center;
+  padding: 20px 10px 20px 30px;
 }
 
-.location-name, .location-time {
-  padding-left: 40px;
+.location-name {
+  padding: 5px 0px 0px 20px;
 }
-.location-details {
-  text-align: center;
-  padding-left: 40px;
+
+.location-time {
+  text-align: left;
+  padding: 0px 0px 10px 20px;
+}
+
+.location-sun, .location-details {
+  padding-top: 25px;
+}
+
+.location-icon {
+  width: 110%;
 }
 
 .sunset-icon, .sunrise-icon {
-  width: 10%;
-  margin: 5px;
+  width: 30%;
+  text-align: center;
+}
+
+.drop-icon {
+  width: 20%;
+}
+
+.wind-icon {
+  width: 30%;
 }
