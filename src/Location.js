@@ -11,7 +11,6 @@ export default class Location extends Component {
   render() {
     return (
       <div className="location-section">
-        <h4 className="location-title">myLocation</h4>
         <div className="location-box">
           <div className="location-weather">
             <div className="row">
