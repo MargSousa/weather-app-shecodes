@@ -8,7 +8,7 @@
   text-align: center;
   font-weight: bold;
   font-size: 28px;
-  padding-right: 30px;
+  margin-right: 100px;
 }
 
 .search-input {
@@ -16,7 +16,6 @@
   font-style: italic;
   height: 31px;
   padding-left: 10px;
-  margin-left: 60px;
 }
 
 .btn-info {
