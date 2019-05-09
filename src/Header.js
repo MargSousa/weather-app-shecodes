@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Header.css";
 import Axios from "axios";
+import TemperatureButton from "./TemperatureButton";
 
 export default class Header extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class Header extends Component {
             <input type="submit" value="Search" className="btn btn-info btn-sm clearfix float-left"></input>
           </form>
           <button type="button" className="btn btn-secondary btn-sm clearfix float-left">Current Location</button>
+          <TemperatureButton />
         </div>
       </div>  
     )
