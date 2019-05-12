@@ -6,8 +6,10 @@
 
 .main-title {
   text-align: center;
-  font-size: 28px;
+  font-weight: bold;
+  font-size: 26px;
   margin-right: 40px;
+  color: #17a2b8;
 }
 
 .search-input {
