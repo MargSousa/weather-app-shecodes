@@ -16,20 +16,19 @@
 }
 
 .location-name {
+  font-size: 20px;
+  font-weight: bold;
   padding: 5px 0px 0px 20px;
 }
 
 .location-time {
   text-align: left;
+  font-size: 18px;
   padding: 0px 0px 10px 20px;
 }
 
 .location-sun, .location-details {
   padding-top: 20px;
-}
-
-.location-icon {
-  width: 110%;
 }
 
 .sunset-icon, .sunrise-icon {
@@ -43,4 +42,13 @@
 
 .wind-icon {
   width: 30%;
+}
+
+.location-icon {
+  width: 110%;
+}
+
+.location-temperature {
+  font-size: 20px;
+  font-weight: bold; 
 }
