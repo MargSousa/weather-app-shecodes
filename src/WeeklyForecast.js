@@ -38,7 +38,7 @@ export default class WeeklyForecast extends Component {
               <td>22°<span className="min-temp"> / 13°C</span></td>
             </tr>
             <tr className="week-footer">
-              <td colspan="3"><a href="https://www.weatherbug.com/weather-forecast/now/lisboa-lisboa-po?center=51.89,-8.49,7" target="_blank">Click here for more information</a></td>
+              <td colspan="3"><a href="https://www.weatherbug.com/weather-forecast/now/lisboa-lisboa-po?center=51.89,-8.49,7" target="_blank" className="link-info">Click here for more information</a></td>
             </tr>
           </tbody>
         </table>
