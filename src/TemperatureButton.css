@@ -1,0 +1,32 @@
+.button-one, .button-two {
+	padding: 2px 8px 2px 8px;
+	background-color: #6c757d;
+	color: white;
+  font-size: 14px;
+	float: left;
+  border: 2px solid #98a1a7;
+}
+
+.button-one {
+  border-radius: 3px 0px 0px 3px;
+  margin-left: 5px;
+}	
+.button-two {
+	border-radius: 0px 3px 3px 0px;
+}
+
+.active {
+	border: 3px solid #F8B62D;
+	background-color: #F8B62D;
+	color: black;
+	font-weight: bold;
+}
+
+.non-active {
+	color: white;
+	border: 3px solid #6c757d;
+}
+
+.non-active:hover {
+	border: 3px solid rgb(190, 186, 186);
+}
