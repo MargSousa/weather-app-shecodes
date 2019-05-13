@@ -17,7 +17,7 @@ export default class TemperatureButton extends Component {
     } else {
       buttonOne.classList.replace("non-active","active");
       buttonTwo.classList.replace("active","non-active");
-      changeText.innerHTML = `I'm Celsius`;
+      console.log(`I'm Celsius`);
     }
   };
   
@@ -29,7 +29,7 @@ export default class TemperatureButton extends Component {
     if (buttonTwo.classList.contains("non-active")) {
       buttonOne.classList.replace("active","non-active");
       buttonTwo.classList.replace("non-active","active");
-      changeText.innerHTML = `I'm Farhneit`;
+      console.log(`I'm Farhneit`);
     }
   };
   
@@ -41,7 +41,6 @@ export default class TemperatureButton extends Component {
           <button type="button" id="button-two" className="button-two non-active" onClick={this.activeFahrenheit}>°F</button>
         </div>
         <br/>
-        <div><h2 id="celsius">Temperature</h2></div>
       </div>  
     )
   }
