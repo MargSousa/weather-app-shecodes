@@ -6,14 +6,14 @@ export default class TemperatureButton extends Component {
     super(props);
   }  
 
-  activeCelsius = () => {
+  activeButton = () => {
     let buttonOne = document.getElementById("button-one");
     let buttonTwo = document.getElementById("button-two");
-    let changeText = document.getElementById("celsius");
-    
+
     if (buttonOne.classList.contains("active")) {
-      buttonOne.classList.replace("non-active","active");
-      buttonTwo.classList.replace("active","non-active");
+      buttonOne.classList.replace("active","non-active");
+      buttonTwo.classList.replace("non-active","active");
+      console.log(`I'm Farhneit`);
     } else {
       buttonOne.classList.replace("non-active","active");
       buttonTwo.classList.replace("active","non-active");
@@ -21,24 +21,12 @@ export default class TemperatureButton extends Component {
     }
   };
   
-  activeFahrenheit = () => {
-    let buttonOne = document.getElementById("button-one");
-    let buttonTwo = document.getElementById("button-two");
-    let changeText = document.getElementById("celsius");
-
-    if (buttonTwo.classList.contains("non-active")) {
-      buttonOne.classList.replace("active","non-active");
-      buttonTwo.classList.replace("non-active","active");
-      console.log(`I'm Farhneit`);
-    }
-  };
-  
   render() {
     return (
       <div className="button-group">
         <div className="temperature-button">
-          <button type="button" id="button-one" className="button-one active" onClick={this.activeCelsius}>°C</button>
-          <button type="button" id="button-two" className="button-two non-active" onClick={this.activeFahrenheit}>°F</button>
+          <button type="button" id="button-one" className="button-one active" onClick={this.activeButton}>°C</button>
+          <button type="button" id="button-two" className="button-two non-active" onClick={this.activeButton}>°F</button>
         </div>
         <br/>
       </div>  
