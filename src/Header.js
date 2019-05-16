@@ -7,11 +7,24 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        date: new Date()
+      date: new Date(),
+      location: {latitude: 38.7, longitude: -9.16}
     };
   }
 
   getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      let getlatitude = position.coords.latitude;
+      let getlongitude = position.coords.longitude;
+      let coords = {latitude: getlatitude, longitude: getlongitude}
+
+      console.log(coords);
+
+      //this.setState({
+      //  location: coords
+      //});
+    });
+
     let now = this.state.date;
     let getTime = document.getElementById('location-time');
     let weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -22,6 +35,9 @@ export default class Header extends Component {
     
     if (getMinutes < 10) {
       getMinutes = `0${getMinutes}`;
+    }
+    if (getHours < 10) {
+      getHours= `0${getHours}`;
     }
 
     if (getHours < 12 ) {
