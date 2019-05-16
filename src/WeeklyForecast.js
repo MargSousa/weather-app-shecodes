@@ -4,6 +4,7 @@ import SunnyIcon from "./images/weather_icons/Sunny.png";
 import CloudyIcon from "./images/weather_icons/Cloudy.png";
 
 export default class WeeklyForecast extends Component {
+
   render() {
     return (
       <div className="weekly-box">

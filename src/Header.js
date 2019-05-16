@@ -1,9 +1,40 @@
 import React, { Component } from "react";
 import "./Header.css";
-import Axios from "axios";
+//import Axios from "axios";
 import TemperatureButton from "./TemperatureButton";
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        date: new Date()
+    };
+  }
+
+  getCurrentLocation = () => {
+    let now = this.state.date;
+    let getTime = document.getElementById('location-time');
+    let weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    let getWeekDay = weekDays[now.getDay()];
+    let getHours = now.getHours();
+    let getMinutes = now.getMinutes();
+    let getClock = "";
+    
+    if (getMinutes < 10) {
+      getMinutes = `0${getMinutes}`;
+    }
+
+    if (getHours < 12 ) {
+      getClock = `AM`;
+    } else {
+      getClock = `PM`;
+    }
+
+    let time = `${getWeekDay}, ${getHours}:${getMinutes} ${getClock}`;
+    getTime.innerHTML = `${time}`;
+    console.log(time);
+  };
+
   render() {
     return (
       <div className="main-header">
@@ -15,7 +46,7 @@ export default class Header extends Component {
             </div>
             <input type="submit" value="Search" className="btn btn-info btn-sm clearfix float-left"></input>
           </form>
-          <button type="button" className="btn btn-secondary btn-sm clearfix float-left">Current Location</button>
+          <button type="button" className="btn btn-secondary btn-sm clearfix float-left" onClick={this.getCurrentLocation}>Current Location</button>
           <TemperatureButton />
         </div>
       </div>  

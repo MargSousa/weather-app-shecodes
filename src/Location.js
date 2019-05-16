@@ -33,7 +33,7 @@ export default class Location extends Component {
                   <div className="location-name">Lisboa, Portugal</div>
                 </div>
                 <div className="row">
-                  <div className="location-time">Friday, 15:15 PM</div>
+                  <div id="location-time">Friday, 15:15 PM</div>
                 </div>
                 <div className="row">
                   <div className="col-sm location-sun">
