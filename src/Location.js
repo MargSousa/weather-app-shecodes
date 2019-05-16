@@ -8,6 +8,20 @@ import PrecipitationIcon from "./images/weather_icons/precipitation2.png";
 import WindIcon from "./images/weather_icons/wind.png";
 
 export default class Location extends Component {
+
+  getLocationTemperature = () => {
+    let buttonTemp = document.getElementById("button-one");
+    let localTemp = document.getElementById("location-temperature");
+    let temperature = 15;
+    let temperatureFahrneit = Math.round(temperature * (9/5) + 32);
+
+    if (buttonTemp.classList.contains("active")) {
+      localTemp.innerHTML = `${temperature}°C`;
+    } else {
+      localTemp.innerHTML = `${temperatureFahrneit}°F`;
+    }
+  };
+
   render() {
     return (
       <div className="location-section">
@@ -16,7 +30,7 @@ export default class Location extends Component {
             <div className="row">
               <div className="col-sm">
                 <div className="row">
-                  <div class="location-name">Lisboa, Portugal</div>
+                  <div className="location-name">Lisboa, Portugal</div>
                 </div>
                 <div className="row">
                   <div className="location-time">Friday, 15:15 PM</div>
@@ -33,7 +47,7 @@ export default class Location extends Component {
                   <div className="col-sm">
                     <img className="location-icon" src={SunnyIcon} alt="Current Weather Icon"/>
                     <div className="location-temperature">Sunny</div>
-                    <div className="location-temperature">22ºC</div>
+                    <div id="location-temperature">22ºC</div>
                   </div>
                 </div>
               </div>
