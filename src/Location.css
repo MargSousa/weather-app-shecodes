@@ -28,7 +28,8 @@
 }
 
 .location-sun, .location-details {
-  padding-top: 20px;
+  padding-top: 30px;
+  width: 130px;
 }
 
 .sunset-icon, .sunrise-icon {
@@ -44,11 +45,17 @@
   width: 30%;
 }
 
-.location-icon {
-  width: 110%;
+#location-icon {
+  width: 100%;
 }
 
-.location-temperature {
-  font-size: 20px;
+#location-temperature { 
+  font-size: 22px;
+  font-weight: bold; 
+}
+
+#location-description {
+  text-transform: capitalize;
+  font-size: 16px;
   font-weight: bold; 
 }
