@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Header.css";
 import Axios from "axios";
 import TemperatureButton from "./TemperatureButton";
+import SunnyIcon from "./images/weather_icons/Sunny.png";
 
 export default class Header extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export default class Header extends Component {
       date: new Date(),
       location: {latitude: 38.7, longitude: -9.16},
       unit: "metric",
-      temperature: 22
+      temperature: 22,
+      tempURL: `${SunnyIcon}`
     };
   }
 
@@ -292,18 +294,49 @@ export default class Header extends Component {
             'ZM' : 'Zambia',
             'ZW' : 'Zimbabwe'
         };
-        
+
         let countryCode = response.data.sys.country;
         let country = response.data.sys.country;
-        
         if (isoCountries.hasOwnProperty(countryCode)) {
           country = isoCountries[countryCode];
         }          
         console.log(country);
 
+        let iconCodes = {
+          '01n' : 'Night',
+          '01d' : 'Sunny',
+          '02n' : 'NightClouds',
+          '02d' : 'SunClouds',
+          '03n' : 'Clouds',
+          '03d' : 'Clouds',
+          '04n' : 'DarkClouds',
+          '04d' : 'DarkClouds',
+          '09n' : 'DarkCloudRain',
+          '09d' : 'DarkCloudRain',
+          '10n' : 'NightRain',
+          '10d' : 'SunRain',
+          '11n' : 'Thunder',
+          '11d' : 'Thunder',
+          '13d' : 'Snow',
+          '13n' : 'Snow',
+          '50d' : 'Mist',
+          '50n' : 'Mist'
+        
+        };
+
+        let getIcon = response.data.weather[0].icon;
+        let icon = response.data.weather[0].icon;
+        if (isoCountries.hasOwnProperty(countryCode)) {
+          icon = iconCodes[getIcon];
+        }          
+        console.log(icon);
+
+        //this.setState({
+        //  imageURL:  `./images/weather_icons/${icon}.png`
+        //});
+
         let city = response.data.name;
         let description = (response.data.weather[0].description);
-        let icon = response.data.weather[0].icon;
         let temperature = Math.round(response.data.main.temp);
         let temperatureFahr = Math.round(temperature * (9/5) + 32);
         let wind = response.data.wind.speed;
