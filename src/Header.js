@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./Header.css";
 import Axios from "axios";
 import TemperatureButton from "./TemperatureButton";
-import SunnyIcon from "./images/weather_icons/Sunny.png";
+import Sunny from "./images/weather_icons/Sunny.png";
+import Night from "./images/weather_icons/Night.png";
+import NightClouds from "./images/weather_icons/NightClouds.png";
 
 export default class Header extends Component {
   constructor(props) {
@@ -10,18 +12,9 @@ export default class Header extends Component {
     this.state = {
       date: new Date(),
       location: {latitude: 38.7, longitude: -9.16},
-      unit: "metric",
-      temperature: 22,
-      tempURL: `${SunnyIcon}`
+      unit: "metrics"
     };
-  }
-
-  //console.log(coords);
-
-  //this.setState({
-  //  location: coords,
-  //  temperature: tempInfo
-  //});
+  }npm
 
   getCurrentLocation = (event) => {
     event.preventDefault();
@@ -321,25 +314,23 @@ export default class Header extends Component {
           '13n' : 'Snow',
           '50d' : 'Mist',
           '50n' : 'Mist'
-        
         };
 
         let getIcon = response.data.weather[0].icon;
-        let icon = response.data.weather[0].icon;
-        if (isoCountries.hasOwnProperty(countryCode)) {
-          icon = iconCodes[getIcon];
+        if (iconCodes.hasOwnProperty(getIcon)) {
+          getIcon = iconCodes[getIcon];
         }          
-        console.log(icon);
+        console.log(getIcon);
 
-        //this.setState({
-        //  imageURL:  `./images/weather_icons/${icon}.png`
-        //});
+        let updateIcon = document.getElementById("location-icon").src;
+        updateIcon = `${getIcon}`;
+        console.log(updateIcon);
 
         let city = response.data.name;
         let description = (response.data.weather[0].description);
         let temperature = Math.round(response.data.main.temp);
         let temperatureFahr = Math.round(temperature * (9/5) + 32);
-        let wind = response.data.wind.speed;
+        let wind = Math.round(response.data.wind.speed * 3.6);
         let sunriseHex = response.data.sys.sunrise;
         let sunsetHex = response.data.sys.sunset;
         let sunrise = new Date(sunriseHex * 1000);
@@ -373,7 +364,6 @@ export default class Header extends Component {
         cityCountryInfo.innerHTML = `${city}, ${country}`;
 
         if (buttonTemp.classList.contains("active")) {
-        //if (this.state.unit === "celsius") {
           tempInfo.innerHTML = `${temperature}°C`;
         } else {
           tempInfo.innerHTML = `${temperatureFahr}°F`;
@@ -407,6 +397,12 @@ export default class Header extends Component {
     getTime.innerHTML = `${time}`;
   };
 
+  getSearchTemp = (event) => {
+    event.preventDefault();
+    let input = document.getElementById('search-input');
+    console.log(input.value);
+  };
+
   render() {
     return (
       <div className="main-header">
@@ -414,11 +410,11 @@ export default class Header extends Component {
           <div className="clearfix float-left main-title">myWeather</div>
           <form className="clearfix float-left"> 
             <div className="form-group float-left">
-              <input type="text" placeholder="Enter a location" className="search-input form-control"></input>
+              <input type="text" placeholder="Enter a location" className="search-input form-control" id="search-input"></input>
             </div>
-            <input type="submit" value="Search" className="btn btn-info btn-sm clearfix float-left"></input>
+            <input type="submit" value="Search" onClick={this.getSearchTemp} className="btn btn-info btn-sm clearfix float-left"></input>
           </form>
-          <button type="button" className="btn btn-secondary btn-sm clearfix float-left" onClick={this.getCurrentLocation}>Current Location</button>
+          <button type="button" onClick={this.getCurrentLocation} className="btn btn-secondary btn-sm clearfix float-left">Current Location</button>
           <TemperatureButton />
         </div>
       </div>  

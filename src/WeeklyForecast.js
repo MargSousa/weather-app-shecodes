@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./WeeklyForecast.css";
 import SunnyIcon from "./images/weather_icons/Sunny.png";
 import CloudyIcon from "./images/weather_icons/Clouds.png";
+import WeekDay from "./WeekDay";
+import WeekTemperature from "./WeekTemperature";
+import WeekIcon from "./WeekIcon";
 
 export default class WeeklyForecast extends Component {
 
@@ -14,9 +17,9 @@ export default class WeeklyForecast extends Component {
               <td colSpan="3" className="weekly-title">Weekly Forecast</td>
             </tr>
             <tr>
-              <td><span className="week-day">SAT</span></td>
-              <td><img className="weekly-icon" src={SunnyIcon} alt="Weather Icon"/></td>
-              <td className="second-column"><span className="max-temp">22°</span><span className="min-temp"> / 13°C</span></td>
+              <td><WeekDay /></td>
+              <td><WeekIcon /></td>
+              <td><WeekTemperature /></td>
             </tr>
             <tr>
               <td><span className="week-day">SAT</span></td>

@@ -41,7 +41,7 @@ export default class Location extends Component {
                     <div><img className="sunset-icon" src={SunsetIcon} alt="Sunset Icon"/><span id="sunset">20:44</span></div>
                     <div className="location-details">
                       <div><img className="drop-icon" src={PrecipitationIcon} alt="Precipitation Icon"/> <span id="precipitation">5%</span></div>
-                      <div><img className="wind-icon" src={WindIcon} alt="Wind Icon"/><span id="wind"> 12 km/h</span></div>
+                      <div><img className="wind-icon" src={WindIcon} alt="Wind Icon"/><span id="wind">  12 km/h</span></div>
                     </div>
                   </div>
                   <div className="col-sm location-main">
