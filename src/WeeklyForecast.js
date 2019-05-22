@@ -17,27 +17,27 @@ export default class WeeklyForecast extends Component {
               <td colSpan="3" className="weekly-title">Weekly Forecast</td>
             </tr>
             <tr>
-              <td><WeekDay /></td>
-              <td><WeekIcon /></td>
-              <td><WeekTemperature /></td>
-            </tr>
-            <tr>
-              <td><span className="week-day">SAT</span></td>
+              <td><span id="week-day1">SAT</span></td>
               <td><img className="weekly-icon" src={CloudyIcon} alt="Weather Icon"/></td>
               <td><span className="max-temp">22°</span><span className="min-temp"> / 13°C</span></td>
             </tr>
             <tr>
-              <td><span className="week-day">SAT</span></td>
+              <td><span id="week-day2">SAT</span></td>
+              <td><img className="weekly-icon" src={CloudyIcon} alt="Weather Icon"/></td>
+              <td><span className="max-temp">22°</span><span className="min-temp"> / 13°C</span></td>
+            </tr>
+            <tr>
+              <td><span id="week-day3">SAT</span></td>
               <td><img className="weekly-icon" src={SunnyIcon} alt="Weather Icon"/></td>
               <td><span className="max-temp">22°</span><span className="min-temp"> / 13°C</span></td>
             </tr>
             <tr>
-              <td><span className="week-day">SAT</span></td>
+              <td><span id="week-day4">SAT</span></td>
               <td><img className="weekly-icon" src={CloudyIcon} alt="Weather Icon"/></td>
               <td><span className="max-temp">22°</span><span className="min-temp"> / 13°C</span></td>
             </tr>
             <tr>
-              <td><span className="week-day">SAT</span></td>
+              <td><span id="week-day5">SAT</span></td>
               <td><img className="weekly-icon" src={SunnyIcon} alt="Weather Icon"/></td>
               <td><span className="max-temp">22°</span><span className="min-temp"> / 13°C</span></td>
             </tr>

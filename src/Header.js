@@ -37,6 +37,11 @@ export default class Header extends Component {
         let tempInfo = document.getElementById('location-temperature');
         let descriptionInfo = document.getElementById('location-description');
         let cityCountryInfo = document.getElementById('location');
+        let weekDay1 = document.getElementById('week-day1');
+        let weekDay2 = document.getElementById('week-day2');
+        let weekDay3 = document.getElementById('week-day3');
+        let weekDay4 = document.getElementById('week-day4');
+        let weekDay5 = document.getElementById('week-day5');
 
         let isoCountries = {
             'AF' : 'Afghanistan',
@@ -367,33 +372,61 @@ export default class Header extends Component {
         } else {
           tempInfo.innerHTML = `${temperatureFahr}°F`;
         }
+      
+        let now = new Date();
+
+        let getTime = document.getElementById('location-time');
+        let weekDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"];
+        let getWeekDay = weekDays[now.getDay()];
+        let getHours = now.getHours();
+        let getMinutes = now.getMinutes();
+        let getClock = "";
+
+        let weekDaysCodes = {
+          'Monday' : 'TUE',
+          'Tuesday' : 'WED',
+          'Wednesday' : 'THU',
+          'Thursday' : 'FRI',
+          'Friday' : 'SAT',
+          'Saturday' : 'SUN',
+          'Sunday' : 'MON'
+        };
+        
+        let getNext1 = weekDaysCodes[getWeekDay];
+        let getWeekDay2 = weekDays[now.getDay()+1];
+        let getNext2 = weekDaysCodes[getWeekDay2];
+        let getWeekDay3 = weekDays[now.getDay()+2];
+        let getNext3 = weekDaysCodes[getWeekDay3];
+        let getWeekDay4 = weekDays[now.getDay()+3];
+        let getNext4 = weekDaysCodes[getWeekDay4];
+        let getWeekDay5 = weekDays[now.getDay()+4];
+        let getNext5 = weekDaysCodes[getWeekDay5];
+
+        weekDay1.innerHTML = `${getNext1}`;
+        weekDay2.innerHTML = `${getNext2}`;
+        weekDay3.innerHTML = `${getNext3}`;
+        weekDay4.innerHTML = `${getNext4}`;
+        weekDay5.innerHTML = `${getNext5}`;
+
+        if (getMinutes < 10) {
+          getMinutes = `0${getMinutes}`;
+        }
+        if (getHours < 10) {
+          getHours= `0${getHours}`;
+        }
+
+        if (getHours < 12 ) {
+          getClock = `AM`;
+        } else {
+          getClock = `PM`;
+        }
+
+        let time = `${getWeekDay}, ${getHours}:${getMinutes} ${getClock}`;
+        getTime.innerHTML = `${time}`;
       });
     });
 
-    let now = this.state.date;
 
-    let getTime = document.getElementById('location-time');
-    let weekDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let getWeekDay = weekDays[now.getDay()];
-    let getHours = now.getHours();
-    let getMinutes = now.getMinutes();
-    let getClock = "";
-  
-    if (getMinutes < 10) {
-      getMinutes = `0${getMinutes}`;
-    }
-    if (getHours < 10) {
-      getHours= `0${getHours}`;
-    }
-
-    if (getHours < 12 ) {
-      getClock = `AM`;
-    } else {
-      getClock = `PM`;
-    }
-
-    let time = `${getWeekDay}, ${getHours}:${getMinutes} ${getClock}`;
-    getTime.innerHTML = `${time}`;
   };
 
   getSearchTemp = (event) => {
