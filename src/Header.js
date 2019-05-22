@@ -24,12 +24,12 @@ export default class Header extends Component {
 
       let key = `e4e4d6ef596a82924b1c141ba55e4e37`;
       let url = `https://api.openweathermap.org/data/2.5`;
-      let path = `weather?lat=${getlatitude}&lon=${getlongitude}&appid=${key}&units=metric`;
-      
-      console.log(coords);      
-      console.log(`${url}/${path}`);
+      let pathCoords = `weather?lat=${getlatitude}&lon=${getlongitude}&appid=${key}&units=metric`;
+      let pathForecast = `forecast?lat=${getlatitude}&lon=${getlongitude}&appid=${key}&units=metric`;
+          
+      console.log(`${url}/${pathCoords}`);
 
-      Axios.get(`${url}/${path}`).then(function(response) {
+      Axios.get(`${url}/${pathCoords}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
@@ -37,11 +37,6 @@ export default class Header extends Component {
         let tempInfo = document.getElementById('location-temperature');
         let descriptionInfo = document.getElementById('location-description');
         let cityCountryInfo = document.getElementById('location');
-        let weekDay1 = document.getElementById('week-day1');
-        let weekDay2 = document.getElementById('week-day2');
-        let weekDay3 = document.getElementById('week-day3');
-        let weekDay4 = document.getElementById('week-day4');
-        let weekDay5 = document.getElementById('week-day5');
 
         let isoCountries = {
             'AF' : 'Afghanistan',
@@ -335,6 +330,7 @@ export default class Header extends Component {
         let temperature = Math.round(response.data.main.temp);
         let temperatureFahr = Math.round(temperature * (9/5) + 32);
         let wind = Math.round(response.data.wind.speed * 3.6);
+        let windUS = Math.round(response.data.wind.speed * 3.6 * 0.62);
         let sunriseHex = response.data.sys.sunrise;
         let sunsetHex = response.data.sys.sunset;
         let sunrise = new Date(sunriseHex * 1000);
@@ -362,15 +358,15 @@ export default class Header extends Component {
         
         sunriseInfo.innerHTML = `${sunriseTime}`;
         sunsetInfo.innerHTML = `${sunsetTime}`;
-        windInfo.innerHTML = `${wind} km/h`;
         descriptionInfo.innerHTML = `${description}`;
-        tempInfo.innerHTML = `${temperature}`;
         cityCountryInfo.innerHTML = `${city}, ${country}`;
 
         if (buttonTemp.classList.contains("active")) {
           tempInfo.innerHTML = `${temperature}°C`;
+          windInfo.innerHTML = `${wind} km/h`;
         } else {
           tempInfo.innerHTML = `${temperatureFahr}°F`;
+          windInfo.innerHTML = `${windUS} mph`;
         }
       
         let now = new Date();
@@ -381,32 +377,6 @@ export default class Header extends Component {
         let getHours = now.getHours();
         let getMinutes = now.getMinutes();
         let getClock = "";
-
-        let weekDaysCodes = {
-          'Monday' : 'TUE',
-          'Tuesday' : 'WED',
-          'Wednesday' : 'THU',
-          'Thursday' : 'FRI',
-          'Friday' : 'SAT',
-          'Saturday' : 'SUN',
-          'Sunday' : 'MON'
-        };
-        
-        let getNext1 = weekDaysCodes[getWeekDay];
-        let getWeekDay2 = weekDays[now.getDay()+1];
-        let getNext2 = weekDaysCodes[getWeekDay2];
-        let getWeekDay3 = weekDays[now.getDay()+2];
-        let getNext3 = weekDaysCodes[getWeekDay3];
-        let getWeekDay4 = weekDays[now.getDay()+3];
-        let getNext4 = weekDaysCodes[getWeekDay4];
-        let getWeekDay5 = weekDays[now.getDay()+4];
-        let getNext5 = weekDaysCodes[getWeekDay5];
-
-        weekDay1.innerHTML = `${getNext1}`;
-        weekDay2.innerHTML = `${getNext2}`;
-        weekDay3.innerHTML = `${getNext3}`;
-        weekDay4.innerHTML = `${getNext4}`;
-        weekDay5.innerHTML = `${getNext5}`;
 
         if (getMinutes < 10) {
           getMinutes = `0${getMinutes}`;
@@ -424,9 +394,165 @@ export default class Header extends Component {
         let time = `${getWeekDay}, ${getHours}:${getMinutes} ${getClock}`;
         getTime.innerHTML = `${time}`;
       });
+      console.log(`${url}/${pathForecast}`);
+
+      Axios.get(`${url}/${pathForecast}`).then(function(response) {
+        let buttonTemp = document.getElementById('button-one');
+        let weekDay1 = document.getElementById('week-day1');
+        let weekDay2 = document.getElementById('week-day2');
+        let weekDay3 = document.getElementById('week-day3');
+        let weekDay4 = document.getElementById('week-day4');
+        let weekDay5 = document.getElementById('week-day5');
+        let tempMin1 = document.getElementById('min-temp1');
+        let tempMin2 = document.getElementById('min-temp2');
+        let tempMin3 = document.getElementById('min-temp3');
+        let tempMin4 = document.getElementById('min-temp4');
+        let tempMin5 = document.getElementById('min-temp5');
+        let tempMax1 = document.getElementById('max-temp1');
+        let tempMax2 = document.getElementById('max-temp2');
+        let tempMax3 = document.getElementById('max-temp3');
+        let tempMax4 = document.getElementById('max-temp4');
+        let tempMax5 = document.getElementById('max-temp5');
+        //let icon1 = document.getElementById('week-icon1').src;
+        //let icon2 = document.getElementById('week-icon2').src;
+        //let icon3 = document.getElementById('week-icon3').src;
+        //let icon4 = document.getElementById('week-icon4').src;
+        //let icon5 = document.getElementById('week-icon5').src;
+        
+        // Obtem dias da semana
+
+        let now = new Date();
+        let weekDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"];
+        let nextDayCodes = {
+          'Monday' : 'TUE',
+          'Tuesday' : 'WED',
+          'Wednesday' : 'THU',
+          'Thursday' : 'FRI',
+          'Friday' : 'SAT',
+          'Saturday' : 'SUN',
+          'Sunday' : 'MON'
+        };
+        let getWeekDay = weekDays[now.getDay()];
+        let getNext1 = nextDayCodes[getWeekDay];
+        let getWeekDay2 = weekDays[now.getDay()+1];
+        let getNext2 = nextDayCodes[getWeekDay2];
+        let getWeekDay3 = weekDays[now.getDay()+2];
+        let getNext3 = nextDayCodes[getWeekDay3];
+        let getWeekDay4 = weekDays[now.getDay()+3];
+        let getNext4 = nextDayCodes[getWeekDay4];
+        let getWeekDay5 = weekDays[now.getDay()+4];
+        let getNext5 = nextDayCodes[getWeekDay5];
+
+        weekDay1.innerHTML = `${getNext1}`;
+        weekDay2.innerHTML = `${getNext2}`;
+        weekDay3.innerHTML = `${getNext3}`;
+        weekDay4.innerHTML = `${getNext4}`;
+        weekDay5.innerHTML = `${getNext5}`;
+
+        // Obtem Temperaturas do forecast
+
+        console.log(response.data.list[0]);
+        let getMinTemp1 = Math.round(response.data.list[4].main.temp_min);
+        let getMaxTemp1 = Math.round(response.data.list[8].main.temp_max);
+        console.log(getMinTemp1);
+        console.log(getMaxTemp1);
+        console.log(response.data.list[4].dt_txt);
+        console.log(response.data.list[8].dt_txt);
+        let getMinTemp2 = Math.round(response.data.list[12].main.temp_min);
+        let getMaxTemp2 = Math.round(response.data.list[16].main.temp_max);
+        console.log(getMinTemp2);
+        console.log(getMaxTemp2);
+        console.log(response.data.list[12].dt_txt);
+        console.log(response.data.list[16].dt_txt);
+        let getMinTemp3 = Math.round(response.data.list[20].main.temp_min);
+        let getMaxTemp3 = Math.round(response.data.list[24].main.temp_max);
+        console.log(getMinTemp3);
+        console.log(getMaxTemp3);
+        console.log(response.data.list[20].dt_txt);
+        console.log(response.data.list[24].dt_txt);
+        let getMinTemp4 = Math.round(response.data.list[28].main.temp_min);
+        let getMaxTemp4 = Math.round(response.data.list[32].main.temp_max);
+        console.log(getMinTemp4);
+        console.log(getMaxTemp4);
+        console.log(response.data.list[28].dt_txt);
+        console.log(response.data.list[32].dt_txt);
+        let getMinTemp5 = Math.round(response.data.list[36].main.temp_min);
+        let getMaxTemp5 = Math.round(response.data.list[39].main.temp_max);
+        console.log(getMinTemp5);
+        console.log(getMaxTemp5);
+        console.log(response.data.list[36].dt_txt);
+        console.log(response.data.list[39].dt_txt);
+
+        let tempFahrMin1 = Math.round(getMinTemp1 * (9/5) + 32);
+        let tempFahrMax1 = Math.round(getMaxTemp1 * (9/5) + 32);
+        let tempFahrMin2 = Math.round(getMinTemp2 * (9/5) + 32);
+        let tempFahrMax2 = Math.round(getMaxTemp2 * (9/5) + 32);
+        let tempFahrMin3 = Math.round(getMinTemp3 * (9/5) + 32);
+        let tempFahrMax3 = Math.round(getMaxTemp3 * (9/5) + 32);
+        let tempFahrMin4 = Math.round(getMinTemp4 * (9/5) + 32);
+        let tempFahrMax4 = Math.round(getMaxTemp4 * (9/5) + 32);
+        let tempFahrMin5 = Math.round(getMinTemp5 * (9/5) + 32);
+        let tempFahrMax5 = Math.round(getMaxTemp5 * (9/5) + 32);
+
+        if (buttonTemp.classList.contains("active")) {
+          tempMax1.innerHTML = `${getMaxTemp1}°`;
+          tempMin1.innerHTML = ` / ${getMinTemp1}°C`;
+          tempMax2.innerHTML = `${getMaxTemp2}°`;
+          tempMin2.innerHTML = ` / ${getMinTemp2}°C`;
+          tempMax3.innerHTML = `${getMaxTemp3}°`;
+          tempMin3.innerHTML = ` / ${getMinTemp3}°C`;
+          tempMax4.innerHTML = `${getMaxTemp4}°`;
+          tempMin4.innerHTML = ` / ${getMinTemp4}°C`;
+          tempMax5.innerHTML = `${getMaxTemp5}°`;
+          tempMin5.innerHTML = ` / ${getMinTemp5}°C`;
+        } else {
+          tempMax1.innerHTML = `${tempFahrMax1}°`;
+          tempMin1.innerHTML = ` / ${tempFahrMin1}°F`;
+          tempMax2.innerHTML = `${tempFahrMax2}°`;
+          tempMin2.innerHTML = ` / ${tempFahrMin2}°F`;
+          tempMax3.innerHTML = `${tempFahrMax3}°`;
+          tempMin3.innerHTML = ` / ${tempFahrMin3}°F`;
+          tempMax4.innerHTML = `${tempFahrMax4}°`;
+          tempMin4.innerHTML = ` / ${tempFahrMin4}°F`;
+          tempMax5.innerHTML = `${tempFahrMax5}°`;
+          tempMin5.innerHTML = ` / ${tempFahrMin5}°F`;
+        }
+
+        // Obtem icons da semana
+
+        let iconCodes = {
+          '01n' : 'Night',
+          '01d' : 'Sunny',
+          '02n' : 'NightClouds',
+          '02d' : 'SunClouds',
+          '03n' : 'Clouds',
+          '03d' : 'Clouds',
+          '04n' : 'DarkClouds',
+          '04d' : 'DarkClouds',
+          '09n' : 'DarkCloudRain',
+          '09d' : 'DarkCloudRain',
+          '10n' : 'NightRain',
+          '10d' : 'SunRain',
+          '11n' : 'Thunder',
+          '11d' : 'Thunder',
+          '13d' : 'Snow',
+          '13n' : 'Snow',
+          '50d' : 'Mist',
+          '50n' : 'Mist'
+        };
+
+        //let getIcon = response.data.weather[0].icon;
+        //if (iconCodes.hasOwnProperty(getIcon)) {
+        //  getIcon = iconCodes[getIcon];
+        //}          
+        //console.log(getIcon);
+
+        //updateIcon = `${getIcon}`;
+        //console.log(updateIcon);
+    
+      });
+
     });
-
-
   };
 
   getSearchTemp = (event) => {
@@ -437,10 +563,12 @@ export default class Header extends Component {
 
       let key = `e4e4d6ef596a82924b1c141ba55e4e37`;
       let url = `https://api.openweathermap.org/data/2.5`;
-      let path = `weather?q=${inputValue}&appid=${key}&units=metric`;
-       
-      console.log(`${url}/${path}`);
-      Axios.get(`${url}/${path}`).then(function(response) {
+      let pathSearch = `weather?q=${inputValue}&appid=${key}&units=metric`;
+      let pathForecast = `forecast?q=${inputValue}&appid=${key}&units=metric`;
+    
+      console.log(`${url}/${pathSearch}`);
+
+      Axios.get(`${url}/${pathSearch}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
@@ -448,6 +576,8 @@ export default class Header extends Component {
         let tempInfo = document.getElementById('location-temperature');
         let descriptionInfo = document.getElementById('location-description');
         let cityCountryInfo = document.getElementById('location');
+        let getTime = document.getElementById('location-time');
+        let updateIcon = document.getElementById("location-icon").src;
 
         let isoCountries = {
             'AF' : 'Afghanistan',
@@ -697,7 +827,6 @@ export default class Header extends Component {
             'ZM' : 'Zambia',
             'ZW' : 'Zimbabwe'
         };
-
         let countryCode = response.data.sys.country;
         let country = response.data.sys.country;
         if (isoCountries.hasOwnProperty(countryCode)) {
@@ -725,14 +854,11 @@ export default class Header extends Component {
           '50d' : 'Mist',
           '50n' : 'Mist'
         };
-
         let getIcon = response.data.weather[0].icon;
         if (iconCodes.hasOwnProperty(getIcon)) {
           getIcon = iconCodes[getIcon];
         }          
         console.log(getIcon);
-
-        let updateIcon = document.getElementById("location-icon").src;
         updateIcon = `${getIcon}`;
         console.log(updateIcon);
 
@@ -741,6 +867,31 @@ export default class Header extends Component {
         let temperature = Math.round(response.data.main.temp);
         let temperatureFahr = Math.round(temperature * (9/5) + 32);
         let wind = Math.round(response.data.wind.speed * 3.6);
+        let windUS = Math.round(response.data.wind.speed * 3.6 * 0.62);
+        let daytime = new Date(response.data.dt * 1000);
+      
+        let weekDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"];
+        let getWeekDay = weekDays[daytime.getDay()];
+        let getHours = daytime.getHours();
+        let getMinutes = daytime.getMinutes();
+        let getClock = "";
+
+        if (getMinutes < 10) {
+          getMinutes = `0${getMinutes}`;
+        }
+        if (getHours < 10) {
+          getHours= `0${getHours}`;
+        }
+
+        if (getHours < 12 ) {
+          getClock = `AM`;
+        } else {
+          getClock = `PM`;
+        }
+
+        let time = `${getWeekDay}, ${getHours}:${getMinutes} ${getClock}`;
+        getTime.innerHTML = `${time}`;
+
         let sunriseHex = response.data.sys.sunrise;
         let sunsetHex = response.data.sys.sunset;
         let sunrise = new Date(sunriseHex * 1000);
@@ -768,16 +919,174 @@ export default class Header extends Component {
         
         sunriseInfo.innerHTML = `${sunriseTime}`;
         sunsetInfo.innerHTML = `${sunsetTime}`;
-        windInfo.innerHTML = `${wind} km/h`;
         descriptionInfo.innerHTML = `${description}`;
-        tempInfo.innerHTML = `${temperature}`;
         cityCountryInfo.innerHTML = `${city}, ${country}`;
 
         if (buttonTemp.classList.contains("active")) {
           tempInfo.innerHTML = `${temperature}°C`;
+          windInfo.innerHTML = `${wind} km/h`;
         } else {
           tempInfo.innerHTML = `${temperatureFahr}°F`;
+          windInfo.innerHTML = `${windUS} mph`;
         }
+      });
+
+      console.log(`${url}/${pathForecast}`);
+
+      Axios.get(`${url}/${pathForecast}`).then(function(response) {
+        let buttonTemp = document.getElementById('button-one');
+        let weekDay1 = document.getElementById('week-day1');
+        let weekDay2 = document.getElementById('week-day2');
+        let weekDay3 = document.getElementById('week-day3');
+        let weekDay4 = document.getElementById('week-day4');
+        let weekDay5 = document.getElementById('week-day5');
+        let tempMin1 = document.getElementById('min-temp1');
+        let tempMin2 = document.getElementById('min-temp2');
+        let tempMin3 = document.getElementById('min-temp3');
+        let tempMin4 = document.getElementById('min-temp4');
+        let tempMin5 = document.getElementById('min-temp5');
+        let tempMax1 = document.getElementById('max-temp1');
+        let tempMax2 = document.getElementById('max-temp2');
+        let tempMax3 = document.getElementById('max-temp3');
+        let tempMax4 = document.getElementById('max-temp4');
+        let tempMax5 = document.getElementById('max-temp5');
+        //let icon1 = document.getElementById('week-icon1').src;
+        //let icon2 = document.getElementById('week-icon2').src;
+        //let icon3 = document.getElementById('week-icon3').src;
+        //let icon4 = document.getElementById('week-icon4').src;
+        //let icon5 = document.getElementById('week-icon5').src;
+        
+        // Obtem dias da semana
+  
+        let now = new Date();
+        let weekDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"];
+        let nextDayCodes = {
+          'Monday' : 'TUE',
+          'Tuesday' : 'WED',
+          'Wednesday' : 'THU',
+          'Thursday' : 'FRI',
+          'Friday' : 'SAT',
+          'Saturday' : 'SUN',
+          'Sunday' : 'MON'
+        };
+        let getWeekDay = weekDays[now.getDay()];
+        let getNext1 = nextDayCodes[getWeekDay];
+        let getWeekDay2 = weekDays[now.getDay()+1];
+        let getNext2 = nextDayCodes[getWeekDay2];
+        let getWeekDay3 = weekDays[now.getDay()+2];
+        let getNext3 = nextDayCodes[getWeekDay3];
+        let getWeekDay4 = weekDays[now.getDay()+3];
+        let getNext4 = nextDayCodes[getWeekDay4];
+        let getWeekDay5 = weekDays[now.getDay()+4];
+        let getNext5 = nextDayCodes[getWeekDay5];
+  
+        weekDay1.innerHTML = `${getNext1}`;
+        weekDay2.innerHTML = `${getNext2}`;
+        weekDay3.innerHTML = `${getNext3}`;
+        weekDay4.innerHTML = `${getNext4}`;
+        weekDay5.innerHTML = `${getNext5}`;
+  
+        // Obtem Temperaturas do forecast
+  
+        console.log(response.data.list[0]);
+        let getMinTemp1 = Math.round(response.data.list[4].main.temp_min);
+        let getMaxTemp1 = Math.round(response.data.list[8].main.temp_max);
+        console.log(getMinTemp1);
+        console.log(getMaxTemp1);
+        console.log(response.data.list[4].dt_txt);
+        console.log(response.data.list[8].dt_txt);
+        let getMinTemp2 = Math.round(response.data.list[12].main.temp_min);
+        let getMaxTemp2 = Math.round(response.data.list[16].main.temp_max);
+        console.log(getMinTemp2);
+        console.log(getMaxTemp2);
+        console.log(response.data.list[12].dt_txt);
+        console.log(response.data.list[16].dt_txt);
+        let getMinTemp3 = Math.round(response.data.list[20].main.temp_min);
+        let getMaxTemp3 = Math.round(response.data.list[24].main.temp_max);
+        console.log(getMinTemp3);
+        console.log(getMaxTemp3);
+        console.log(response.data.list[20].dt_txt);
+        console.log(response.data.list[24].dt_txt);
+        let getMinTemp4 = Math.round(response.data.list[28].main.temp_min);
+        let getMaxTemp4 = Math.round(response.data.list[32].main.temp_max);
+        console.log(getMinTemp4);
+        console.log(getMaxTemp4);
+        console.log(response.data.list[28].dt_txt);
+        console.log(response.data.list[32].dt_txt);
+        let getMinTemp5 = Math.round(response.data.list[36].main.temp_min);
+        let getMaxTemp5 = Math.round(response.data.list[39].main.temp_max);
+        console.log(getMinTemp5);
+        console.log(getMaxTemp5);
+        console.log(response.data.list[36].dt_txt);
+        console.log(response.data.list[39].dt_txt);
+  
+        let tempFahrMin1 = Math.round(getMinTemp1 * (9/5) + 32);
+        let tempFahrMax1 = Math.round(getMaxTemp1 * (9/5) + 32);
+        let tempFahrMin2 = Math.round(getMinTemp2 * (9/5) + 32);
+        let tempFahrMax2 = Math.round(getMaxTemp2 * (9/5) + 32);
+        let tempFahrMin3 = Math.round(getMinTemp3 * (9/5) + 32);
+        let tempFahrMax3 = Math.round(getMaxTemp3 * (9/5) + 32);
+        let tempFahrMin4 = Math.round(getMinTemp4 * (9/5) + 32);
+        let tempFahrMax4 = Math.round(getMaxTemp4 * (9/5) + 32);
+        let tempFahrMin5 = Math.round(getMinTemp5 * (9/5) + 32);
+        let tempFahrMax5 = Math.round(getMaxTemp5 * (9/5) + 32);
+  
+        if (buttonTemp.classList.contains("active")) {
+          tempMax1.innerHTML = `${getMaxTemp1}°`;
+          tempMin1.innerHTML = ` / ${getMinTemp1}°C`;
+          tempMax2.innerHTML = `${getMaxTemp2}°`;
+          tempMin2.innerHTML = ` / ${getMinTemp2}°C`;
+          tempMax3.innerHTML = `${getMaxTemp3}°`;
+          tempMin3.innerHTML = ` / ${getMinTemp3}°C`;
+          tempMax4.innerHTML = `${getMaxTemp4}°`;
+          tempMin4.innerHTML = ` / ${getMinTemp4}°C`;
+          tempMax5.innerHTML = `${getMaxTemp5}°`;
+          tempMin5.innerHTML = ` / ${getMinTemp5}°C`;
+        } else {
+          tempMax1.innerHTML = `${tempFahrMax1}°`;
+          tempMin1.innerHTML = ` / ${tempFahrMin1}°F`;
+          tempMax2.innerHTML = `${tempFahrMax2}°`;
+          tempMin2.innerHTML = ` / ${tempFahrMin2}°F`;
+          tempMax3.innerHTML = `${tempFahrMax3}°`;
+          tempMin3.innerHTML = ` / ${tempFahrMin3}°F`;
+          tempMax4.innerHTML = `${tempFahrMax4}°`;
+          tempMin4.innerHTML = ` / ${tempFahrMin4}°F`;
+          tempMax5.innerHTML = `${tempFahrMax5}°`;
+          tempMin5.innerHTML = ` / ${tempFahrMin5}°F`;
+        }
+  
+        // Obtem icons da semana
+  
+        let iconCodes = {
+          '01n' : 'Night',
+          '01d' : 'Sunny',
+          '02n' : 'NightClouds',
+          '02d' : 'SunClouds',
+          '03n' : 'Clouds',
+          '03d' : 'Clouds',
+          '04n' : 'DarkClouds',
+          '04d' : 'DarkClouds',
+          '09n' : 'DarkCloudRain',
+          '09d' : 'DarkCloudRain',
+          '10n' : 'NightRain',
+          '10d' : 'SunRain',
+          '11n' : 'Thunder',
+          '11d' : 'Thunder',
+          '13d' : 'Snow',
+          '13n' : 'Snow',
+          '50d' : 'Mist',
+          '50n' : 'Mist'
+        };
+  
+        //let getIcon = response.data.weather[0].icon;
+        //if (iconCodes.hasOwnProperty(getIcon)) {
+        //  getIcon = iconCodes[getIcon];
+        //}          
+        //console.log(getIcon);
+  
+        //updateIcon = `${getIcon}`;
+        //console.log(updateIcon);
+    
       });
     } else {
       alert(`Please enter a city`);
@@ -791,7 +1100,7 @@ export default class Header extends Component {
           <div className="clearfix float-left main-title">myWeather</div>
           <form className="clearfix float-left"> 
             <div className="form-group float-left">
-              <input type="text" placeholder="Enter a location" className="search-input form-control" id="search-input"></input>
+              <input type="text" placeholder="Enter a location" autocomplete="off" className="search-input form-control" id="search-input"></input>
             </div>
             <input type="submit" value="Search" onClick={this.getSearchTemp} className="btn btn-info btn-sm clearfix float-left"></input>
           </form>

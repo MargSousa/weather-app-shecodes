@@ -14,18 +14,18 @@
   border-bottom: 1px solid grey;
 }  
 
-.weekly-icon {
+#week-icon1, #week-icon2, #week-icon3, #week-icon4, #week-icon5 {
   height: 30%;
+}
+
+#min-temp1, #min-temp2, #min-temp3, #min-temp4, #min-temp5 {
+  font-size: 14px;
 }
 
 .week-footer {
   font-size: 14px;
   border-top: 1px solid grey;
   padding-top: 30px;
-}
-
-.min-temp {
-  font-size: 14px;
 }
 
 .link-info {
