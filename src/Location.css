@@ -59,3 +59,13 @@
   font-size: 16px;
   font-weight: bold; 
 }
+
+@media (max-width: 767.98px) {  
+  #location-icon {
+    width: 40%;
+  }
+
+  .location-main {
+    margin-bottom: 40px;
+  }
+}

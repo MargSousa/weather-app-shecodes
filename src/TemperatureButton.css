@@ -4,7 +4,7 @@
 	color: white;
   font-size: 14px;
 	float: left;
-  border: 2px solid #98a1a7;
+	border: 2px solid #98a1a7;
 }
 
 .button-one {
@@ -29,4 +29,10 @@
 
 .non-active:hover {
 	border: 3px solid rgb(190, 186, 186);
+}
+
+@media (max-width: 780px) {  
+	.button-one {
+		margin-left: 270px;
+	}
 }
