@@ -32,7 +32,7 @@
   color: #17a2b8;
 }
 
-@media (max-width: 767.98px) {  
+@media (max-width: 600px) {  
   .weekly-title {
     border-top: 1px solid grey;
   }  

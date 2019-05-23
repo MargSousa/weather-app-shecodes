@@ -30,9 +30,3 @@
 .non-active:hover {
 	border: 3px solid rgb(190, 186, 186);
 }
-
-@media (max-width: 780px) {  
-	.button-one {
-		margin-left: 270px;
-	}
-}

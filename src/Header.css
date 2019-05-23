@@ -27,10 +27,39 @@
   margin-left: 6px;
 }
 
-@media (max-width: 767.98px) {  
+@media (max-width: 500px) {  
   .main-header {
     margin: 0 auto;
-    max-width: 400px;
-    margin: 50px 0px 5px 0px;
+    margin: 40px 0px 10px 0px;
+    width: 310px;
+    text-align: center;
+  }
+  .main-title {
+    margin: 0px 0px 5px 130px;
+  }
+  .search-input {
+    margin: 0px 0px 0px 65px;
+  }
+  .btn-secondary {
+    margin-left: 90px;
+  }
+}
+
+@media (max-width: 400px) {  
+  .main-header {
+    margin: 0 auto;
+    margin: 40px 0px 10px 0px;
+    width: 300px;
+    text-align: center;
+  }
+  .main-title {
+    margin: 0px 0px 5px 75px;
+  }
+  .search-input {
+    margin: 0px 0px 0px 20px;
+  }
+
+  .btn-secondary {
+    margin-left: 35px;
   }
 }
