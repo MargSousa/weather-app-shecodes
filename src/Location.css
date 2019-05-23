@@ -60,6 +60,14 @@
   font-weight: bold; 
 }
 
+
+
+@media screen and (min-width: 401px) and (max-width: 2000px) {  
+  #small-screen {
+    display: none;
+  }
+}
+
 @media (max-width: 550px) {  
     
   .location-main {
@@ -83,17 +91,20 @@
   .location-main {
     margin: 0 auto;
     display: inline;
-    padding-top: 20px;
-    padding-bottom: 30px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .location-sun, .location-details {
     margin: 0 auto;
-    padding-top: 35px;
-    padding-top: 30px;
+    padding: 40px 0px 30px 0px;
   }
 
   #location-icon {
     width: 90%;
+  }
+
+  #large-screen {
+    display: none;
   }
 }

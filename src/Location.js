@@ -36,6 +36,11 @@ export default class Location extends Component {
                   <div id="location-time">Friday, 15:15 PM</div>
                 </div>
                 <div className="row">
+                  <div className="col-sm location-main" id="small-screen">
+                    <img id="location-icon" src={SunnyIcon} alt="Current Weather Icon"/>
+                    <div id="location-temperature">22ºC</div>
+                    <div id="location-description">Sunny</div>
+                  </div>
                   <div className="col-sm location-sun">
                     <div><img className="sunrise-icon" src={SunriseIcon} alt="Sunrise Icon"/><span id="sunrise">06:11</span></div>
                     <div><img className="sunset-icon" src={SunsetIcon} alt="Sunset Icon"/><span id="sunset">20:44</span></div>
@@ -44,7 +49,7 @@ export default class Location extends Component {
                       <div><img className="wind-icon" src={WindIcon} alt="Wind Icon"/><span id="wind">  12 km/h</span></div>
                     </div>
                   </div>
-                  <div className="col-sm location-main">
+                  <div className="col-sm location-main" id="large-screen">
                     <img id="location-icon" src={SunnyIcon} alt="Current Weather Icon"/>
                     <div id="location-temperature">22ºC</div>
                     <div id="location-description">Sunny</div>
