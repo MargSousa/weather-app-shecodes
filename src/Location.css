@@ -60,12 +60,40 @@
   font-weight: bold; 
 }
 
-@media (max-width: 767.98px) {  
-  #location-icon {
-    width: 40%;
+@media (max-width: 550px) {  
+    
+  .location-main {
+    margin-bottom: 40px;
+  }
+
+  .location-sun, .location-details {
+    padding-top: 60px;
+    display: inline;
   }
 
   .location-main {
-    margin-bottom: 40px;
+    display: inline;
+    width: 190px;
+    padding-bottom: 10px;
+  }
+
+}
+
+@media (max-width: 380px) {  
+  .location-main {
+    margin: 0 auto;
+    display: inline;
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+
+  .location-sun, .location-details {
+    margin: 0 auto;
+    padding-top: 35px;
+    padding-top: 30px;
+  }
+
+  #location-icon {
+    width: 90%;
   }
 }
