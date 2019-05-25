@@ -45,8 +45,8 @@ export default class Location extends Component {
                 <div className="row">
                   <div className="col-sm location-main" id="small-screen">
                     <img id="location-icon-s" src={SunRain} alt="Current Weather Icon"/>
-                    <div id="location-temperature-small">22ºC</div>
-                    <div id="location-description">Sunny</div>
+                    <div id="location-temperature-s">22ºC</div>
+                    <div id="location-description-s">Sunny</div>
                   </div>
                   <div className="col-sm location-sun">
                     <div><img className="sunrise-icon" src={SunriseIcon} alt="Sunrise Icon"/><span id="sunrise">06:11</span></div>
@@ -58,8 +58,8 @@ export default class Location extends Component {
                   </div>
                   <div className="col-sm location-main" id="large-screen">
                     <img id="location-icon-l" src={SunRain} alt="Current Weather Icon"/>
-                    <div id="location-temperature-large">10ºC</div>
-                    <div id="location-description">Sunny</div>
+                    <div id="location-temperature-l">10ºC</div>
+                    <div id="location-description-l">Sunny</div>
                   </div>
                 </div>
               </div>

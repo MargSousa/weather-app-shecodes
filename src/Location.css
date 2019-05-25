@@ -50,12 +50,12 @@
   width: 100%;
 }
 
-#location-temperature-small, #location-temperature-large  { 
+#location-temperature-s, #location-temperature-l  { 
   font-size: 22px;
   font-weight: bold; 
 }
 
-#location-description {
+#location-description-s, #location-description-l {
   text-transform: capitalize;
   font-size: 16px;
   font-weight: bold; 

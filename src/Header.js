@@ -28,14 +28,16 @@ export default class Header extends Component {
 
       Axios.get(`${url}/${pathCoords}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
+        let cityCountryInfo = document.getElementById('location');
+        let getTime = document.getElementById('location-time');
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
         let rainInfo = document.getElementById('precipitation');
         let windInfo = document.getElementById('wind');
-        let tempInfo1 = document.getElementById('location-temperature-small');
-        let tempInfo2 = document.getElementById('location-temperature-large');
-        let descriptionInfo = document.getElementById('location-description');
-        let cityCountryInfo = document.getElementById('location');
+        let tempInfo1 = document.getElementById('location-temperature-s');
+        let tempInfo2 = document.getElementById('location-temperature-l');
+        let descriptionInfo1 = document.getElementById('location-description-s');
+        let descriptionInfo2 = document.getElementById('location-description-l');
         let icon1 = document.getElementById("location-icon-s");
         let icon2 = document.getElementById("location-icon-l");
 
@@ -374,7 +376,8 @@ export default class Header extends Component {
         
         sunriseInfo.innerHTML = `${sunriseTime}`;
         sunsetInfo.innerHTML = `${sunsetTime}`;
-        descriptionInfo.innerHTML = `${description}`;
+        descriptionInfo1.innerHTML = `${description}`;
+        descriptionInfo2.innerHTML = `${description}`;
         cityCountryInfo.innerHTML = `${city}, ${country}`;
 
         if (buttonTemp.classList.contains("active")) {
@@ -391,7 +394,6 @@ export default class Header extends Component {
       
         let now = new Date();
 
-        let getTime = document.getElementById('location-time');
         let weekDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"];
         let getWeekDay = weekDays[now.getDay()];
         let getHours = now.getHours();
@@ -630,15 +632,16 @@ export default class Header extends Component {
 
       Axios.get(`${url}/${pathSearch}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
+        let cityCountryInfo = document.getElementById('location');
+        let getTime = document.getElementById('location-time');
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
         let rainInfo = document.getElementById('precipitation');
         let windInfo = document.getElementById('wind');
-        let tempInfo1 = document.getElementById('location-temperature-small');
-        let tempInfo2 = document.getElementById('location-temperature-large');
-        let descriptionInfo = document.getElementById('location-description');
-        let cityCountryInfo = document.getElementById('location');
-        let getTime = document.getElementById('location-time');
+        let tempInfo1 = document.getElementById('location-temperature-s');
+        let tempInfo2 = document.getElementById('location-temperature-l');
+        let descriptionInfo1 = document.getElementById('location-description-s');
+        let descriptionInfo2 = document.getElementById('location-description-l');
         let icon1 = document.getElementById("location-icon-s");
         let icon2 = document.getElementById("location-icon-l");
 
@@ -1002,7 +1005,8 @@ export default class Header extends Component {
         
         sunriseInfo.innerHTML = `${sunriseTime}`;
         sunsetInfo.innerHTML = `${sunsetTime}`;
-        descriptionInfo.innerHTML = `${description}`;
+        descriptionInfo1.innerHTML = `${description}`;
+        descriptionInfo2.innerHTML = `${description}`;
         cityCountryInfo.innerHTML = `${city}, ${country}`;
         
         if (buttonTemp.classList.contains("active")) {
