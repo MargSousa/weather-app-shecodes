@@ -34,7 +34,8 @@ export default class Header extends Component {
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
         let windInfo = document.getElementById('wind');
-        let tempInfo = document.getElementById('location-temperature');
+        let tempInfo1 = document.getElementById('location-temperature-small');
+        let tempInfo2 = document.getElementById('location-temperature-large');
         let descriptionInfo = document.getElementById('location-description');
         let cityCountryInfo = document.getElementById('location');
 
@@ -362,12 +363,17 @@ export default class Header extends Component {
         cityCountryInfo.innerHTML = `${city}, ${country}`;
 
         if (buttonTemp.classList.contains("active")) {
-          tempInfo.innerHTML = `${temperature}°C`;
+          tempInfo1.innerHTML = `${temperature}°C`;
+          tempInfo2.innerHTML = `${temperature}°C`;
           windInfo.innerHTML = `${wind} km/h`;
         } else {
-          tempInfo.innerHTML = `${temperatureFahr}°F`;
+          tempInfo1.innerHTML = `${temperatureFahr}°F`;
+          tempInfo2.innerHTML = `${temperatureFahr}°F`;
           windInfo.innerHTML = `${windUS} mph`;
         }
+        console.log(tempInfo1);
+        console.log(tempInfo2);
+        console.log(temperatureFahr);
       
         let now = new Date();
 
@@ -573,7 +579,8 @@ export default class Header extends Component {
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
         let windInfo = document.getElementById('wind');
-        let tempInfo = document.getElementById('location-temperature');
+        let tempInfo1 = document.getElementById('location-temperature-small');
+        let tempInfo2 = document.getElementById('location-temperature-large');
         let descriptionInfo = document.getElementById('location-description');
         let cityCountryInfo = document.getElementById('location');
         let getTime = document.getElementById('location-time');
@@ -923,10 +930,12 @@ export default class Header extends Component {
         cityCountryInfo.innerHTML = `${city}, ${country}`;
 
         if (buttonTemp.classList.contains("active")) {
-          tempInfo.innerHTML = `${temperature}°C`;
+          tempInfo1.innerHTML = `${temperature}°C`;
+          tempInfo2.innerHTML = `${temperature}°C`;
           windInfo.innerHTML = `${wind} km/h`;
         } else {
-          tempInfo.innerHTML = `${temperatureFahr}°F`;
+          tempInfo1.innerHTML = `${temperatureFahr}°F`;
+          tempInfo2.innerHTML = `${temperatureFahr}°F`;
           windInfo.innerHTML = `${windUS} mph`;
         }
       });
@@ -1100,7 +1109,7 @@ export default class Header extends Component {
           <div className="clearfix float-left main-title">myWeather</div>
           <form className="clearfix float-left"> 
             <div className="form-group float-left">
-              <input type="text" placeholder="Enter a location" autocomplete="off" className="search-input form-control" id="search-input"></input>
+              <input type="text" placeholder="Enter a location" autoComplete="off" className="search-input form-control" id="search-input"></input>
             </div>
             <input type="submit" value="Search" onClick={this.getSearchTemp} className="btn btn-info btn-sm clearfix float-left"></input>
           </form>

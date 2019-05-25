@@ -43,13 +43,14 @@
 
 .wind-icon {
   width: 30%;
+  margin-right: 5px;
 }
 
 #location-icon {
   width: 100%;
 }
 
-#location-temperature { 
+#location-temperature-small, #location-temperature-large  { 
   font-size: 22px;
   font-weight: bold; 
 }
