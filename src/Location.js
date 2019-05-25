@@ -1,16 +1,36 @@
 import React, { Component } from "react";
 import "./Location.css";
 import WeeklyForecast from "./WeeklyForecast";
-import SunnyIcon from "./images/weather_icons/Sunny.png";
+import SunRain from "./images/weather_icons/SunRain.png";
 import SunsetIcon from "./images/weather_icons/Sunset.png";
 import SunriseIcon from "./images/weather_icons/Sunrise.png";
 import PrecipitationIcon from "./images/weather_icons/precipitation2.png";
 import WindIcon from "./images/weather_icons/wind.png";
 
 export default class Location extends Component {
+  constructor(props) {
+   super(props);
+   this.state = {
+     loaded: true
+   };
+
+  // let key = `e4e4d6ef596a82924b1c141ba55e4e37`;
+  // let url = `https://api.openweathermap.org/data/2.5`;
+  // let path = `weather?q=${props.name}&appid=${key}&units=metric`;
+
+  // Axios.get(`${url}/${path}`).then(function(response) {
+  //   this.setState({
+  //     loaded: true,
+  //     name: response.data.name,
+  //     description: response.data.weather[0].main,
+  //     icon: 'Rainy Icon'
+  //   });
+  // });
+  }
 
   render() {
-    return (
+    if (this.state.loaded) {
+      return (
       <div className="location-section">
         <div className="location-box">
           <div className="location-weather">
@@ -24,7 +44,7 @@ export default class Location extends Component {
                 </div>
                 <div className="row">
                   <div className="col-sm location-main" id="small-screen">
-                    <img id="location-icon" src={SunnyIcon} alt="Current Weather Icon"/>
+                    <img id="location-icon-s" src={SunRain} alt="Current Weather Icon"/>
                     <div id="location-temperature-small">22ºC</div>
                     <div id="location-description">Sunny</div>
                   </div>
@@ -37,8 +57,8 @@ export default class Location extends Component {
                     </div>
                   </div>
                   <div className="col-sm location-main" id="large-screen">
-                    <img id="location-icon" src={SunnyIcon} alt="Current Weather Icon"/>
-                    <div id="location-temperature-large">22ºC</div>
+                    <img id="location-icon-l" src={SunRain} alt="Current Weather Icon"/>
+                    <div id="location-temperature-large">10ºC</div>
                     <div id="location-description">Sunny</div>
                   </div>
                 </div>
@@ -51,5 +71,14 @@ export default class Location extends Component {
         </div>   
       </div>
     )
+    } else {
+      return (
+        <div className="location-section">
+          <div className="location-box">
+            Loading...
+          </div>
+        </div>  
+      )  
+    }
   }
 }

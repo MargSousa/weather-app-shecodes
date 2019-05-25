@@ -2,16 +2,13 @@ import React, { Component } from "react";
 import "./Header.css";
 import Axios from "axios";
 import TemperatureButton from "./TemperatureButton";
-import Sunny from "./images/weather_icons/Sunny.png";
-import Night from "./images/weather_icons/Night.png";
-import NightClouds from "./images/weather_icons/NightClouds.png";
 
 export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       date: new Date(),
-      unit: "metrics"
+      units: "metric"
     };
   }npm
 
@@ -33,11 +30,14 @@ export default class Header extends Component {
         let buttonTemp = document.getElementById("button-one");
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
+        let rainInfo = document.getElementById('precipitation');
         let windInfo = document.getElementById('wind');
         let tempInfo1 = document.getElementById('location-temperature-small');
         let tempInfo2 = document.getElementById('location-temperature-large');
         let descriptionInfo = document.getElementById('location-description');
         let cityCountryInfo = document.getElementById('location');
+        let icon1 = document.getElementById("location-icon-s");
+        let icon2 = document.getElementById("location-icon-l");
 
         let isoCountries = {
             'AF' : 'Afghanistan',
@@ -293,7 +293,6 @@ export default class Header extends Component {
         if (isoCountries.hasOwnProperty(countryCode)) {
           country = isoCountries[countryCode];
         }          
-        console.log(country);
 
         let iconCodes = {
           '01n' : 'Night',
@@ -315,17 +314,33 @@ export default class Header extends Component {
           '50d' : 'Mist',
           '50n' : 'Mist'
         };
-
         let getIcon = response.data.weather[0].icon;
+
+        if (getIcon === '09d' || getIcon === '09n') {
+          rainInfo.innerHTML = `90%`;
+        } else if (getIcon === '10d' ||  getIcon === '10n') {
+          rainInfo.innerHTML = `70%`;
+        } else if (getIcon === '04d' ||  getIcon === '04n') {
+          rainInfo.innerHTML = `50%`;
+        }  else if (getIcon === '03d' ||  getIcon === '03n') {
+          rainInfo.innerHTML = `10%`;
+        } else {
+          rainInfo.innerHTML = `0%`;
+        }
+
         if (iconCodes.hasOwnProperty(getIcon)) {
           getIcon = iconCodes[getIcon];
-        }          
-        console.log(getIcon);
-
-        let updateIcon = document.getElementById("location-icon").src;
-        updateIcon = `${getIcon}`;
-        console.log(updateIcon);
-
+          let iconUrl = `./images/weather_icons/${getIcon}.png`;
+          icon1.setAttribute("src",iconUrl);
+          icon2.setAttribute("src",iconUrl);
+          console.log(iconUrl);
+        } else {
+          let getIcon = response.data.weather[0].icon;
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon}.png`;
+          icon1.setAttribute("src",iconUrl);
+          icon2.setAttribute("src",iconUrl);
+        }
+        
         let city = response.data.name;
         let description = (response.data.weather[0].description);
         let temperature = Math.round(response.data.main.temp);
@@ -371,8 +386,7 @@ export default class Header extends Component {
           tempInfo2.innerHTML = `${temperatureFahr}°F`;
           windInfo.innerHTML = `${windUS} mph`;
         }
-        console.log(tempInfo1);
-        console.log(tempInfo2);
+        console.log(temperature);
         console.log(temperatureFahr);
       
         let now = new Date();
@@ -419,11 +433,11 @@ export default class Header extends Component {
         let tempMax3 = document.getElementById('max-temp3');
         let tempMax4 = document.getElementById('max-temp4');
         let tempMax5 = document.getElementById('max-temp5');
-        //let icon1 = document.getElementById('week-icon1').src;
-        //let icon2 = document.getElementById('week-icon2').src;
-        //let icon3 = document.getElementById('week-icon3').src;
-        //let icon4 = document.getElementById('week-icon4').src;
-        //let icon5 = document.getElementById('week-icon5').src;
+        let icon1 = document.getElementById('week-icon1');
+        let icon2 = document.getElementById('week-icon2');
+        let icon3 = document.getElementById('week-icon3');
+        let icon4 = document.getElementById('week-icon4');
+        let icon5 = document.getElementById('week-icon5');
         
         // Obtem dias da semana
 
@@ -457,37 +471,37 @@ export default class Header extends Component {
 
         // Obtem Temperaturas do forecast
 
-        console.log(response.data.list[0]);
         let getMinTemp1 = Math.round(response.data.list[4].main.temp_min);
         let getMaxTemp1 = Math.round(response.data.list[8].main.temp_max);
-        console.log(getMinTemp1);
-        console.log(getMaxTemp1);
-        console.log(response.data.list[4].dt_txt);
-        console.log(response.data.list[8].dt_txt);
         let getMinTemp2 = Math.round(response.data.list[12].main.temp_min);
         let getMaxTemp2 = Math.round(response.data.list[16].main.temp_max);
-        console.log(getMinTemp2);
-        console.log(getMaxTemp2);
-        console.log(response.data.list[12].dt_txt);
-        console.log(response.data.list[16].dt_txt);
         let getMinTemp3 = Math.round(response.data.list[20].main.temp_min);
         let getMaxTemp3 = Math.round(response.data.list[24].main.temp_max);
-        console.log(getMinTemp3);
-        console.log(getMaxTemp3);
-        console.log(response.data.list[20].dt_txt);
-        console.log(response.data.list[24].dt_txt);
         let getMinTemp4 = Math.round(response.data.list[28].main.temp_min);
         let getMaxTemp4 = Math.round(response.data.list[32].main.temp_max);
-        console.log(getMinTemp4);
-        console.log(getMaxTemp4);
-        console.log(response.data.list[28].dt_txt);
-        console.log(response.data.list[32].dt_txt);
         let getMinTemp5 = Math.round(response.data.list[36].main.temp_min);
         let getMaxTemp5 = Math.round(response.data.list[39].main.temp_max);
-        console.log(getMinTemp5);
-        console.log(getMaxTemp5);
-        console.log(response.data.list[36].dt_txt);
-        console.log(response.data.list[39].dt_txt);
+
+        //console.log(getMinTemp1);
+        //console.log(getMaxTemp1);
+        //console.log(response.data.list[4].dt_txt);
+        //console.log(response.data.list[8].dt_txt);
+        //console.log(getMinTemp2);
+        //console.log(getMaxTemp2);
+        //console.log(response.data.list[12].dt_txt);
+        //console.log(response.data.list[16].dt_txt);
+        //console.log(getMinTemp3);
+        //console.log(getMaxTemp3);
+        //console.log(response.data.list[20].dt_txt);
+        //console.log(response.data.list[24].dt_txt);
+        //console.log(getMinTemp4);
+        //console.log(getMaxTemp4);
+        //console.log(response.data.list[28].dt_txt);
+        //console.log(response.data.list[32].dt_txt);
+        //console.log(getMinTemp5);
+        //console.log(getMaxTemp5);
+        //console.log(response.data.list[36].dt_txt);
+        //console.log(response.data.list[39].dt_txt);
 
         let tempFahrMin1 = Math.round(getMinTemp1 * (9/5) + 32);
         let tempFahrMax1 = Math.round(getMaxTemp1 * (9/5) + 32);
@@ -546,16 +560,56 @@ export default class Header extends Component {
           '50d' : 'Mist',
           '50n' : 'Mist'
         };
-
-        //let getIcon = response.data.weather[0].icon;
-        //if (iconCodes.hasOwnProperty(getIcon)) {
-        //  getIcon = iconCodes[getIcon];
-        //}          
-        //console.log(getIcon);
-
-        //updateIcon = `${getIcon}`;
-        //console.log(updateIcon);
+        
+        let getIcon1 = response.data.list[10].weather[0].icon;
+        let getIcon2 = response.data.list[18].weather[0].icon;
+        let getIcon3 = response.data.list[26].weather[0].icon;
+        let getIcon4 = response.data.list[34].weather[0].icon;
+        let getIcon5 = response.data.list[39].weather[0].icon;
     
+        if (iconCodes.hasOwnProperty(getIcon1)) {
+          getIcon1 = iconCodes[getIcon1];
+          let iconUrl = `./images/weather_icons/${getIcon1}.png`;
+          icon1.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon1}.png`;
+          icon1.setAttribute("src",iconUrl);
+        }
+
+        if (iconCodes.hasOwnProperty(getIcon2)) {
+          getIcon2 = iconCodes[getIcon2];
+          let iconUrl = `./images/weather_icons/${getIcon2}.png`;
+          icon2.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon2}.png`;
+          icon2.setAttribute("src",iconUrl);
+        }
+        if (iconCodes.hasOwnProperty(getIcon3)) {
+          getIcon3 = iconCodes[getIcon3];
+          let iconUrl = `./images/weather_icons/${getIcon3}.png`;
+          icon3.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon3}.png`;
+          icon3.setAttribute("src",iconUrl);
+        }
+
+        if (iconCodes.hasOwnProperty(getIcon4)) {
+          getIcon4 = iconCodes[getIcon4];
+          let iconUrl = `./images/weather_icons/${getIcon4}.png`;
+          icon4.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon4}.png`;
+          icon4.setAttribute("src",iconUrl);
+        }
+
+        if (iconCodes.hasOwnProperty(getIcon5)) {
+          getIcon5 = iconCodes[getIcon5];
+          let iconUrl = `./images/weather_icons/${getIcon5}.png`;
+          icon5.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon5}.png`;
+          icon5.setAttribute("src",iconUrl);
+        }
       });
 
     });
@@ -578,13 +632,15 @@ export default class Header extends Component {
         let buttonTemp = document.getElementById("button-one");
         let sunriseInfo = document.getElementById('sunrise');
         let sunsetInfo = document.getElementById('sunset');
+        let rainInfo = document.getElementById('precipitation');
         let windInfo = document.getElementById('wind');
         let tempInfo1 = document.getElementById('location-temperature-small');
         let tempInfo2 = document.getElementById('location-temperature-large');
         let descriptionInfo = document.getElementById('location-description');
         let cityCountryInfo = document.getElementById('location');
         let getTime = document.getElementById('location-time');
-        let updateIcon = document.getElementById("location-icon").src;
+        let icon1 = document.getElementById("location-icon-s");
+        let icon2 = document.getElementById("location-icon-l");
 
         let isoCountries = {
             'AF' : 'Afghanistan',
@@ -861,13 +917,33 @@ export default class Header extends Component {
           '50d' : 'Mist',
           '50n' : 'Mist'
         };
+
         let getIcon = response.data.weather[0].icon;
+
+        if (getIcon === '09d' || getIcon === '09n') {
+          rainInfo.innerHTML = `90%`;
+        } else if (getIcon === '10d' ||  getIcon === '10n') {
+          rainInfo.innerHTML = `70%`;
+        } else if (getIcon === '04d' ||  getIcon === '04n') {
+          rainInfo.innerHTML = `50%`;
+        }  else if (getIcon === '03d' ||  getIcon === '03n') {
+          rainInfo.innerHTML = `10%`;
+        } else {
+          rainInfo.innerHTML = `0%`;
+        }
+
         if (iconCodes.hasOwnProperty(getIcon)) {
           getIcon = iconCodes[getIcon];
-        }          
-        console.log(getIcon);
-        updateIcon = `${getIcon}`;
-        console.log(updateIcon);
+          let iconUrl = `./images/weather_icons/${getIcon}.png`;
+          icon1.setAttribute("src",iconUrl);
+          icon2.setAttribute("src",iconUrl);
+          console.log(iconUrl);
+        } else {
+          let getIcon = response.data.weather[0].icon;
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon}.png`;
+          icon1.setAttribute("src",iconUrl);
+          icon2.setAttribute("src",iconUrl);
+        }
 
         let city = response.data.name;
         let description = (response.data.weather[0].description);
@@ -928,7 +1004,7 @@ export default class Header extends Component {
         sunsetInfo.innerHTML = `${sunsetTime}`;
         descriptionInfo.innerHTML = `${description}`;
         cityCountryInfo.innerHTML = `${city}, ${country}`;
-
+        
         if (buttonTemp.classList.contains("active")) {
           tempInfo1.innerHTML = `${temperature}°C`;
           tempInfo2.innerHTML = `${temperature}°C`;
@@ -959,11 +1035,11 @@ export default class Header extends Component {
         let tempMax3 = document.getElementById('max-temp3');
         let tempMax4 = document.getElementById('max-temp4');
         let tempMax5 = document.getElementById('max-temp5');
-        //let icon1 = document.getElementById('week-icon1').src;
-        //let icon2 = document.getElementById('week-icon2').src;
-        //let icon3 = document.getElementById('week-icon3').src;
-        //let icon4 = document.getElementById('week-icon4').src;
-        //let icon5 = document.getElementById('week-icon5').src;
+        let icon1 = document.getElementById('week-icon1');
+        let icon2 = document.getElementById('week-icon2');
+        let icon3 = document.getElementById('week-icon3');
+        let icon4 = document.getElementById('week-icon4');
+        let icon5 = document.getElementById('week-icon5');
         
         // Obtem dias da semana
   
@@ -996,39 +1072,18 @@ export default class Header extends Component {
         weekDay5.innerHTML = `${getNext5}`;
   
         // Obtem Temperaturas do forecast
-  
-        console.log(response.data.list[0]);
+
         let getMinTemp1 = Math.round(response.data.list[4].main.temp_min);
         let getMaxTemp1 = Math.round(response.data.list[8].main.temp_max);
-        console.log(getMinTemp1);
-        console.log(getMaxTemp1);
-        console.log(response.data.list[4].dt_txt);
-        console.log(response.data.list[8].dt_txt);
         let getMinTemp2 = Math.round(response.data.list[12].main.temp_min);
         let getMaxTemp2 = Math.round(response.data.list[16].main.temp_max);
-        console.log(getMinTemp2);
-        console.log(getMaxTemp2);
-        console.log(response.data.list[12].dt_txt);
-        console.log(response.data.list[16].dt_txt);
         let getMinTemp3 = Math.round(response.data.list[20].main.temp_min);
         let getMaxTemp3 = Math.round(response.data.list[24].main.temp_max);
-        console.log(getMinTemp3);
-        console.log(getMaxTemp3);
-        console.log(response.data.list[20].dt_txt);
-        console.log(response.data.list[24].dt_txt);
         let getMinTemp4 = Math.round(response.data.list[28].main.temp_min);
         let getMaxTemp4 = Math.round(response.data.list[32].main.temp_max);
-        console.log(getMinTemp4);
-        console.log(getMaxTemp4);
-        console.log(response.data.list[28].dt_txt);
-        console.log(response.data.list[32].dt_txt);
         let getMinTemp5 = Math.round(response.data.list[36].main.temp_min);
         let getMaxTemp5 = Math.round(response.data.list[39].main.temp_max);
-        console.log(getMinTemp5);
-        console.log(getMaxTemp5);
-        console.log(response.data.list[36].dt_txt);
-        console.log(response.data.list[39].dt_txt);
-  
+    
         let tempFahrMin1 = Math.round(getMinTemp1 * (9/5) + 32);
         let tempFahrMax1 = Math.round(getMaxTemp1 * (9/5) + 32);
         let tempFahrMin2 = Math.round(getMinTemp2 * (9/5) + 32);
@@ -1086,15 +1141,57 @@ export default class Header extends Component {
           '50d' : 'Mist',
           '50n' : 'Mist'
         };
-  
-        //let getIcon = response.data.weather[0].icon;
-        //if (iconCodes.hasOwnProperty(getIcon)) {
-        //  getIcon = iconCodes[getIcon];
-        //}          
-        //console.log(getIcon);
-  
-        //updateIcon = `${getIcon}`;
-        //console.log(updateIcon);
+
+        let getIcon1 = response.data.list[10].weather[0].icon;
+        let getIcon2 = response.data.list[18].weather[0].icon;
+        let getIcon3 = response.data.list[26].weather[0].icon;
+        let getIcon4 = response.data.list[34].weather[0].icon;
+        let getIcon5 = response.data.list[39].weather[0].icon;
+    
+        if (iconCodes.hasOwnProperty(getIcon1)) {
+          getIcon1 = iconCodes[getIcon1];
+          let iconUrl = `./images/weather_icons/${getIcon1}.png`;
+          icon1.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon1}.png`;
+          icon1.setAttribute("src",iconUrl);
+        }
+
+        if (iconCodes.hasOwnProperty(getIcon2)) {
+          getIcon2 = iconCodes[getIcon2];
+          let iconUrl = `./images/weather_icons/${getIcon2}.png`;
+          icon2.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon2}.png`;
+          icon2.setAttribute("src",iconUrl);
+        }
+
+        if (iconCodes.hasOwnProperty(getIcon3)) {
+          getIcon3 = iconCodes[getIcon3];
+          let iconUrl = `./images/weather_icons/${getIcon3}.png`;
+          icon3.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon3}.png`;
+          icon3.setAttribute("src",iconUrl);
+        }
+
+        if (iconCodes.hasOwnProperty(getIcon4)) {
+          getIcon4 = iconCodes[getIcon4];
+          let iconUrl = `./images/weather_icons/${getIcon4}.png`;
+          icon4.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon4}.png`;
+          icon4.setAttribute("src",iconUrl);
+        }
+
+        if (iconCodes.hasOwnProperty(getIcon5)) {
+          getIcon5 = iconCodes[getIcon5];
+          let iconUrl = `./images/weather_icons/${getIcon5}.png`;
+          icon5.setAttribute("src",iconUrl);
+        } else {
+          let iconUrl = `https://openweathermap.org/img/w/${getIcon5}.png`;
+          icon5.setAttribute("src",iconUrl);
+        }
     
       });
     } else {
