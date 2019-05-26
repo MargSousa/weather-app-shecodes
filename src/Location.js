@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import Loader from "react-loader-spinner";
 import "./Location.css";
 import WeeklyForecast from "./WeeklyForecast";
 import SunRain from "./images/weather_icons/SunRain.png";
@@ -739,7 +740,7 @@ export default class Location extends Component {
       return (
         <div className="location-section">
           <div className="location-box">
-            <b>Loading your weather...</b>
+          <Loader type="Circles" color="#18A2B8" height={40} width={40} />
           </div>
         </div>  
       )  
