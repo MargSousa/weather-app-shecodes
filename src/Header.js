@@ -4,14 +4,7 @@ import Axios from "axios";
 import TemperatureButton from "./TemperatureButton";
 
 export default class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: new Date(),
-      units: "metric"
-    };
-  }npm
-
+  
   getCurrentLocation = (event) => {
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -698,7 +691,6 @@ export default class Header extends Component {
           icon5.setAttribute("src",iconUrl);
         }
       });
-
     });
   };
 
@@ -1394,7 +1386,7 @@ export default class Header extends Component {
             </div>
             <input type="submit" value="Search" onClick={this.getSearchTemp} className="btn btn-info btn-sm clearfix float-left"></input>
           </form>
-          <button type="button" onClick={this.getCurrentLocation} className="btn btn-secondary btn-sm clearfix float-left">Current Location</button>
+          <button type="button" onClick={this.getCurrentLocation.bind(this)} className="btn btn-secondary btn-sm clearfix float-left">Current Location</button>
           <TemperatureButton />
         </div>
       </div>  
