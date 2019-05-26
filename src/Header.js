@@ -17,7 +17,7 @@ export default class Header extends Component {
     navigator.geolocation.getCurrentPosition(function(position) {
       let getlatitude = position.coords.latitude;
       let getlongitude = position.coords.longitude;
-      let coords = {latitude: getlatitude, longitude: getlongitude};
+      //let coords = {latitude: getlatitude, longitude: getlongitude};
 
       let key = `e4e4d6ef596a82924b1c141ba55e4e37`;
       let url = `https://api.openweathermap.org/data/2.5`;
@@ -473,37 +473,122 @@ export default class Header extends Component {
 
         // Obtem Temperaturas do forecast
 
-        let getMinTemp1 = Math.round(response.data.list[4].main.temp_min);
-        let getMaxTemp1 = Math.round(response.data.list[8].main.temp_max);
-        let getMinTemp2 = Math.round(response.data.list[12].main.temp_min);
-        let getMaxTemp2 = Math.round(response.data.list[16].main.temp_max);
-        let getMinTemp3 = Math.round(response.data.list[20].main.temp_min);
-        let getMaxTemp3 = Math.round(response.data.list[24].main.temp_max);
-        let getMinTemp4 = Math.round(response.data.list[28].main.temp_min);
-        let getMaxTemp4 = Math.round(response.data.list[32].main.temp_max);
-        let getMinTemp5 = Math.round(response.data.list[36].main.temp_min);
-        let getMaxTemp5 = Math.round(response.data.list[39].main.temp_max);
+        let newTime = new Date();
+        let hours = newTime.getHours();
+        console.log(hours);
 
-        //console.log(getMinTemp1);
-        //console.log(getMaxTemp1);
-        //console.log(response.data.list[4].dt_txt);
-        //console.log(response.data.list[8].dt_txt);
-        //console.log(getMinTemp2);
-        //console.log(getMaxTemp2);
-        //console.log(response.data.list[12].dt_txt);
-        //console.log(response.data.list[16].dt_txt);
-        //console.log(getMinTemp3);
-        //console.log(getMaxTemp3);
-        //console.log(response.data.list[20].dt_txt);
-        //console.log(response.data.list[24].dt_txt);
-        //console.log(getMinTemp4);
-        //console.log(getMaxTemp4);
-        //console.log(response.data.list[28].dt_txt);
-        //console.log(response.data.list[32].dt_txt);
-        //console.log(getMinTemp5);
-        //console.log(getMaxTemp5);
-        //console.log(response.data.list[36].dt_txt);
-        //console.log(response.data.list[39].dt_txt);
+        //if (hours >= 1) 
+        let index1 = 8;
+        let index2 = 11;
+        let index3 = 16;
+        let index4 = 19;
+        let index5 = 24;
+        let index6 = 27;
+        let index7 = 32;
+        let index8 = 35;
+        let index9 = 32;
+        let index10 = 35;
+        
+        if (hours >= 22) {
+          index1 = 1;
+          index2 = 4;
+          index3 = 9;
+          index4 = 12;
+          index5 = 17;
+          index6 = 20;
+          index7 = 25;
+          index8 = 28;
+          index9 = 33;
+          index10 = 36;
+        } else if (hours >= 19) {
+          index1 = 2;
+          index2 = 5;
+          index3 = 10;
+          index4 = 13;
+          index5 = 18;
+          index6 = 21;
+          index7 = 26;
+          index8 = 29;
+          index9 = 34;
+          index10 = 37;
+        } else if (hours >= 16) {
+          index1 = 3;
+          index2 = 6;
+          index3 = 11;
+          index4 = 14;
+          index5 = 19;
+          index6 = 22;
+          index7 = 27;
+          index8 = 30;
+          index9 = 35;
+          index10 = 38;
+        } else if (hours >= 13) {
+          index1 = 4;
+          index2 = 7;
+          index3 = 12;
+          index4 = 15;
+          index5 = 20;
+          index6 = 23;
+          index7 = 28;
+          index8 = 31;
+          index9 = 36;
+          index10 = 39;
+        } else if (hours >= 10 ) {
+          index1 = 5;
+          index2 = 8;
+          index3 = 13;
+          index4 = 16;
+          index5 = 21;
+          index6 = 24;
+          index7 = 29;
+          index8 = 32;
+          index9 = 37;
+          index10 = 32;
+        } else if (hours >= 7) {
+          index1 = 6;
+          index2 = 9;
+          index3 = 14;
+          index4 = 17;
+          index5 = 22;
+          index6 = 25;
+          index7 = 30;
+          index8 = 33;
+          index9 = 38;
+          index10 = 33;
+        } else if (hours >= 4) {
+          index1 = 7;
+          index2 = 10;
+          index3 = 15;
+          index4 = 18;
+          index5 = 23;
+          index6 = 26;
+          index7 = 31;
+          index8 = 34;
+          index9 = 39;
+          index10 = 34;
+        } 
+
+        //console.log(response.data.list[index1].dt_txt);
+        //console.log(response.data.list[index2].dt_txt);
+        //console.log(response.data.list[index3].dt_txt);
+        //console.log(response.data.list[index4].dt_txt);
+        //console.log(response.data.list[index5].dt_txt);
+        //console.log(response.data.list[index6].dt_txt);
+        //console.log(response.data.list[index7].dt_txt);
+        //console.log(response.data.list[index8].dt_txt);
+        //console.log(response.data.list[index9].dt_txt);
+        //console.log(response.data.list[index10].dt_txt);
+
+        let getMinTemp1 = Math.round(response.data.list[index1].main.temp_min);
+        let getMaxTemp1 = Math.round(response.data.list[index2].main.temp_max);
+        let getMinTemp2 = Math.round(response.data.list[index3].main.temp_min);
+        let getMaxTemp2 = Math.round(response.data.list[index4].main.temp_max);
+        let getMinTemp3 = Math.round(response.data.list[index5].main.temp_min);
+        let getMaxTemp3 = Math.round(response.data.list[index6].main.temp_max);
+        let getMinTemp4 = Math.round(response.data.list[index7].main.temp_min);
+        let getMaxTemp4 = Math.round(response.data.list[index8].main.temp_max);
+        let getMinTemp5 = Math.round(response.data.list[index9].main.temp_min);
+        let getMaxTemp5 = Math.round(response.data.list[index10].main.temp_max);
 
         let tempFahrMin1 = Math.round(getMinTemp1 * (9/5) + 32);
         let tempFahrMax1 = Math.round(getMaxTemp1 * (9/5) + 32);
@@ -563,11 +648,11 @@ export default class Header extends Component {
           '50n' : 'Mist'
         };
         
-        let getIcon1 = response.data.list[10].weather[0].icon;
-        let getIcon2 = response.data.list[18].weather[0].icon;
-        let getIcon3 = response.data.list[26].weather[0].icon;
-        let getIcon4 = response.data.list[34].weather[0].icon;
-        let getIcon5 = response.data.list[39].weather[0].icon;
+        let getIcon1 = response.data.list[index2].weather[0].icon;
+        let getIcon2 = response.data.list[index4].weather[0].icon;
+        let getIcon3 = response.data.list[index6].weather[0].icon;
+        let getIcon4 = response.data.list[index8].weather[0].icon;
+        let getIcon5 = response.data.list[index10].weather[0].icon;
     
         if (iconCodes.hasOwnProperty(getIcon1)) {
           getIcon1 = iconCodes[getIcon1];
@@ -1077,16 +1162,111 @@ export default class Header extends Component {
   
         // Obtem Temperaturas do forecast
 
-        let getMinTemp1 = Math.round(response.data.list[4].main.temp_min);
-        let getMaxTemp1 = Math.round(response.data.list[8].main.temp_max);
-        let getMinTemp2 = Math.round(response.data.list[12].main.temp_min);
-        let getMaxTemp2 = Math.round(response.data.list[16].main.temp_max);
-        let getMinTemp3 = Math.round(response.data.list[20].main.temp_min);
-        let getMaxTemp3 = Math.round(response.data.list[24].main.temp_max);
-        let getMinTemp4 = Math.round(response.data.list[28].main.temp_min);
-        let getMaxTemp4 = Math.round(response.data.list[32].main.temp_max);
-        let getMinTemp5 = Math.round(response.data.list[36].main.temp_min);
-        let getMaxTemp5 = Math.round(response.data.list[39].main.temp_max);
+        let newTime = new Date();
+        let hours = newTime.getHours();
+        console.log(hours);
+
+        //if (hours >= 1) 
+        let index1 = 8;
+        let index2 = 11;
+        let index3 = 16;
+        let index4 = 19;
+        let index5 = 24;
+        let index6 = 27;
+        let index7 = 32;
+        let index8 = 35;
+        let index9 = 32;
+        let index10 = 35;
+        
+        if (hours >= 22) {
+          index1 = 1;
+          index2 = 4;
+          index3 = 9;
+          index4 = 12;
+          index5 = 17;
+          index6 = 20;
+          index7 = 25;
+          index8 = 28;
+          index9 = 33;
+          index10 = 36;
+        } else if (hours >= 19) {
+          index1 = 2;
+          index2 = 5;
+          index3 = 10;
+          index4 = 13;
+          index5 = 18;
+          index6 = 21;
+          index7 = 26;
+          index8 = 29;
+          index9 = 34;
+          index10 = 37;
+        } else if (hours >= 16) {
+          index1 = 3;
+          index2 = 6;
+          index3 = 11;
+          index4 = 14;
+          index5 = 19;
+          index6 = 22;
+          index7 = 27;
+          index8 = 30;
+          index9 = 35;
+          index10 = 38;
+        } else if (hours >= 13) {
+          index1 = 4;
+          index2 = 7;
+          index3 = 12;
+          index4 = 15;
+          index5 = 20;
+          index6 = 23;
+          index7 = 28;
+          index8 = 31;
+          index9 = 36;
+          index10 = 39;
+        } else if (hours >= 10 ) {
+          index1 = 5;
+          index2 = 8;
+          index3 = 13;
+          index4 = 16;
+          index5 = 21;
+          index6 = 24;
+          index7 = 29;
+          index8 = 32;
+          index9 = 37;
+          index10 = 32;
+        } else if (hours >= 7) {
+          index1 = 6;
+          index2 = 9;
+          index3 = 14;
+          index4 = 17;
+          index5 = 22;
+          index6 = 25;
+          index7 = 30;
+          index8 = 33;
+          index9 = 38;
+          index10 = 33;
+        } else if (hours >= 4) {
+          index1 = 7;
+          index2 = 10;
+          index3 = 15;
+          index4 = 18;
+          index5 = 23;
+          index6 = 26;
+          index7 = 31;
+          index8 = 34;
+          index9 = 39;
+          index10 = 34;
+        } 
+
+        let getMinTemp1 = Math.round(response.data.list[index1].main.temp_min);
+        let getMaxTemp1 = Math.round(response.data.list[index2].main.temp_max);
+        let getMinTemp2 = Math.round(response.data.list[index3].main.temp_min);
+        let getMaxTemp2 = Math.round(response.data.list[index4].main.temp_max);
+        let getMinTemp3 = Math.round(response.data.list[index5].main.temp_min);
+        let getMaxTemp3 = Math.round(response.data.list[index6].main.temp_max);
+        let getMinTemp4 = Math.round(response.data.list[index7].main.temp_min);
+        let getMaxTemp4 = Math.round(response.data.list[index8].main.temp_max);
+        let getMinTemp5 = Math.round(response.data.list[index9].main.temp_min);
+        let getMaxTemp5 = Math.round(response.data.list[index10].main.temp_max);
     
         let tempFahrMin1 = Math.round(getMinTemp1 * (9/5) + 32);
         let tempFahrMax1 = Math.round(getMaxTemp1 * (9/5) + 32);
@@ -1146,11 +1326,11 @@ export default class Header extends Component {
           '50n' : 'Mist'
         };
 
-        let getIcon1 = response.data.list[10].weather[0].icon;
-        let getIcon2 = response.data.list[18].weather[0].icon;
-        let getIcon3 = response.data.list[26].weather[0].icon;
-        let getIcon4 = response.data.list[34].weather[0].icon;
-        let getIcon5 = response.data.list[39].weather[0].icon;
+        let getIcon1 = response.data.list[index2].weather[0].icon;
+        let getIcon2 = response.data.list[index4].weather[0].icon;
+        let getIcon3 = response.data.list[index6].weather[0].icon;
+        let getIcon4 = response.data.list[index8].weather[0].icon;
+        let getIcon5 = response.data.list[index10].weather[0].icon;
     
         if (iconCodes.hasOwnProperty(getIcon1)) {
           getIcon1 = iconCodes[getIcon1];

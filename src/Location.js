@@ -59,7 +59,7 @@ export default class Location extends Component {
                   <div className="col-sm location-main" id="large-screen">
                     <img id="location-icon-l" src={SunRain} alt="Current Weather Icon"/>
                     <div id="location-temperature-l">10ºC</div>
-                    <div id="location-description-l">Sunny</div>
+                    <div id="location-description-l">Moderate Rain</div>
                   </div>
                 </div>
               </div>
