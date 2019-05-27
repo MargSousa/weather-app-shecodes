@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
-import Axios from "axios";
+import axios from "axios";
 import TemperatureButton from "./TemperatureButton";
 
 export default class Header extends Component {
@@ -19,7 +19,7 @@ export default class Header extends Component {
           
       console.log(`${url}/${pathCoords}`);
 
-      Axios.get(`${url}/${pathCoords}`).then(function(response) {
+      axios.get(`${url}/${pathCoords}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
         let cityCountryInfo = document.getElementById('location');
         let getTime = document.getElementById('location-time');
@@ -411,7 +411,7 @@ export default class Header extends Component {
       });
       console.log(`${url}/${pathForecast}`);
 
-      Axios.get(`${url}/${pathForecast}`).then(function(response) {
+      axios.get(`${url}/${pathForecast}`).then(function(response) {
         let buttonTemp = document.getElementById('button-one');
         let weekDay1 = document.getElementById('week-day1');
         let weekDay2 = document.getElementById('week-day2');
@@ -707,7 +707,7 @@ export default class Header extends Component {
     
       console.log(`${url}/${pathSearch}`);
 
-      Axios.get(`${url}/${pathSearch}`).then(function(response) {
+      axios.get(`${url}/${pathSearch}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
         let cityCountryInfo = document.getElementById('location');
         let getTime = document.getElementById('location-time');
@@ -1099,7 +1099,7 @@ export default class Header extends Component {
 
       console.log(`${url}/${pathForecast}`);
 
-      Axios.get(`${url}/${pathForecast}`).then(function(response) {
+      axios.get(`${url}/${pathForecast}`).then(function(response) {
         let buttonTemp = document.getElementById('button-one');
         let weekDay1 = document.getElementById('week-day1');
         let weekDay2 = document.getElementById('week-day2');

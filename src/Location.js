@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Axios from "axios";
+import axios from "axios";
 import Loader from "react-loader-spinner";
 import "./Location.css";
 import WeeklyForecast from "./WeeklyForecast";
@@ -29,7 +29,7 @@ export default class Location extends Component {
 
       console.log(`${url}/${path}`);
 
-      Axios.get(`${url}/${path}`).then(function(response) {
+      axios.get(`${url}/${path}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
         let cityCountryInfo = document.getElementById('location');
         let getTime = document.getElementById('location-time');
@@ -418,7 +418,7 @@ export default class Location extends Component {
         getTime.innerHTML = `${time}`;
       });
 
-      Axios.get(`${url}/${pathForecast}`).then(function(response) {
+      axios.get(`${url}/${pathForecast}`).then(function(response) {
         let buttonTemp = document.getElementById('button-one');
         let weekDay1 = document.getElementById('week-day1');
         let weekDay2 = document.getElementById('week-day2');
