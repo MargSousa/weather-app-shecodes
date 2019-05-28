@@ -3,7 +3,6 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import "./Location.css";
 import WeeklyForecast from "./WeeklyForecast";
-import SunRain from "./images/weather_icons/SunRain.png";
 import SunsetIcon from "./images/weather_icons/Sunset.png";
 import SunriseIcon from "./images/weather_icons/Sunrise.png";
 import PrecipitationIcon from "./images/weather_icons/precipitation2.png";
@@ -31,16 +30,16 @@ export default class Location extends Component {
 
       axios.get(`${url}/${path}`).then(function(response) {
         let buttonTemp = document.getElementById("button-one");
-        let cityCountryInfo = document.getElementById('location');
-        let getTime = document.getElementById('location-time');
-        let sunriseInfo = document.getElementById('sunrise');
-        let sunsetInfo = document.getElementById('sunset');
-        let rainInfo = document.getElementById('precipitation');
-        let windInfo = document.getElementById('wind');
-        let tempInfo1 = document.getElementById('location-temperature-s');
-        let tempInfo2 = document.getElementById('location-temperature-l');
-        let descriptionInfo1 = document.getElementById('location-description-s');
-        let descriptionInfo2 = document.getElementById('location-description-l');
+        let cityCountryInfo = document.getElementById("location");
+        let getTime = document.getElementById("location-time");
+        let sunriseInfo = document.getElementById("sunrise");
+        let sunsetInfo = document.getElementById("sunset");
+        let rainInfo = document.getElementById("precipitation");
+        let windInfo = document.getElementById("wind");
+        let tempInfo1 = document.getElementById("location-temperature-s");
+        let tempInfo2 = document.getElementById("location-temperature-l");
+        let descriptionInfo1 = document.getElementById("location-description-s");
+        let descriptionInfo2 = document.getElementById("location-description-l");
         let icon1 = document.getElementById("location-icon-s");
         let icon2 = document.getElementById("location-icon-l");
 
@@ -702,29 +701,29 @@ export default class Location extends Component {
             <div className="row">
               <div className="col-sm">
                 <div className="row">
-                  <div className="location-name"><span id="location">Lisboa, Portugal</span></div>
+                  <div className="location-name"><span id="location"></span></div>
                 </div>
                 <div className="row">
-                  <div id="location-time">Friday, 15:15 PM</div>
+                  <div id="location-time"></div>
                 </div>
                 <div className="row">
                   <div className="col-sm location-main" id="small-screen">
-                    <img id="location-icon-s" src={SunRain} alt="Current Weather Icon"/>
-                    <div id="location-temperature-s">22ºC</div>
-                    <div id="location-description-s">Sunny</div>
+                    <img id="location-icon-s" src="#" alt="Current Weather Icon"/>
+                    <div id="location-temperature-s"></div>
+                    <div id="location-description-s"></div>
                   </div>
                   <div className="col-sm location-sun">
-                    <div><img className="sunrise-icon" src={SunriseIcon} alt="Sunrise Icon"/><span id="sunrise">06:11</span></div>
-                    <div><img className="sunset-icon" src={SunsetIcon} alt="Sunset Icon"/><span id="sunset">20:44</span></div>
+                    <div><img className="sunrise-icon" src={SunriseIcon} alt="Sunrise Icon"/><span id="sunrise"></span></div>
+                    <div><img className="sunset-icon" src={SunsetIcon} alt="Sunset Icon"/><span id="sunset"></span></div>
                     <div className="location-details">
-                      <div><img className="drop-icon" src={PrecipitationIcon} alt="Precipitation Icon"/> <span id="precipitation">5%</span></div>
-                      <div><img className="wind-icon" src={WindIcon} alt="Wind Icon"/><span id="wind">  12 km/h</span></div>
+                      <div><img className="drop-icon" src={PrecipitationIcon} alt="Precipitation Icon"/> <span id="precipitation"></span></div>
+                      <div><img className="wind-icon" src={WindIcon} alt="Wind Icon"/><span id="wind">  </span></div>
                     </div>
                   </div>
                   <div className="col-sm location-main" id="large-screen">
-                    <img id="location-icon-l" src={SunRain} alt="Current Weather Icon"/>
-                    <div id="location-temperature-l">10ºC</div>
-                    <div id="location-description-l">Moderate Rain</div>
+                    <img id="location-icon-l" src="#" alt="Current Weather Icon"/>
+                    <div id="location-temperature-l"></div>
+                    <div id="location-description-l"></div>
                   </div>
                 </div>
               </div>

@@ -27,7 +27,25 @@
   margin-left: 6px;
 }
 
-@media (max-width: 500px) {  
+@media (max-width: 767px) {  
+  .main-header {
+    margin: 0 auto;
+    margin: 40px 0px 10px 0px;
+    width: 450px;
+    text-align: center;
+  }
+  .main-title {
+    margin: 0px 0px 5px 50px;
+  }
+  .search-input {
+    margin: 0px 0px 0px 20px;
+  }
+  .btn-secondary {
+    margin-left: 90px;
+  }
+}
+
+@media (max-width: 600px) {  
   .main-header {
     margin: 0 auto;
     margin: 40px 0px 10px 0px;
