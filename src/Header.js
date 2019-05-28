@@ -1095,7 +1095,7 @@ export default class Header extends Component {
           tempInfo2.innerHTML = `${temperatureFahr}°F`;
           windInfo.innerHTML = `${windUS} mph`;
         }
-      });
+      }).catch(error => alert(`We can't get the weather of ${inputValue} right now, please try another city!`));
 
       console.log(`${url}/${pathForecast}`);
 

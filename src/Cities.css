@@ -1,16 +1,26 @@
 .cities-section {
-  max-width: 900px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
 .cities-title {
-  margin-bottom: 5px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 26px;
+  color: #17a2b8;
+  margin: 10px 0px 0px 15px;
 }
 
 .city-box {
-  border: solid 1px grey;
-  border-radius: 5px;
+  border: solid 2px #6c757d;
+  border-radius: 15px;
   margin: 0 auto;
-  margin: 0px 15px 0px 15px;
+  text-align: center;
+  margin: 10px 15px 10px 15px;
   padding: 10px;
+}
+
+.cityFav {
+  font-weight: bold;
+  font-size: 16px;
 }

@@ -10,16 +10,16 @@ export default class Cities extends Component {
         <div className="cities-section">
           <div className="row">
             <div className="col-sm city-box">
-              <FavouriteCity />
+              <FavouriteCity name="Madrid"/>
             </div>
             <div className="col-sm city-box">
-              <FavouriteCity /> 
+              <FavouriteCity name="Coventry"/> 
             </div>
             <div className="col-sm city-box">
-              <FavouriteCity />
+              <FavouriteCity name="Auckland"/>
             </div>
             <div className="col-sm city-box">
-              <FavouriteCity /> 
+              <FavouriteCity name="San Francisco"/> 
             </div>
           </div>
         </div>
