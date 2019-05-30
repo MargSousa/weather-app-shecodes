@@ -1121,9 +1121,7 @@ export default class Header extends Component {
         let icon3 = document.getElementById('week-icon3');
         let icon4 = document.getElementById('week-icon4');
         let icon5 = document.getElementById('week-icon5');
-        let countryNow = response.data
-        console.log(countryNow);
-        
+
         // Obtem dias da semana
   
         let now = new Date();
