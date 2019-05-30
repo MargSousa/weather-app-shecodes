@@ -18,7 +18,7 @@
   font-weight: bold;
   font-size: 26px;
   color: #17a2b8;
-  margin: 20px 0px 10px 15px;
+  margin: 20px 0px 5px 15px;
 }
 
 .city-box {
@@ -40,4 +40,10 @@
 
 .loading {
   padding: 30px;
+}
+
+@media (max-width: 420px) {
+  .cards {
+    margin: 5px
+  }
 }
