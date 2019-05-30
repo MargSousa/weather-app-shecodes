@@ -7,17 +7,17 @@ export default class Cities extends Component {
     return (
       <div className="cities-section">
         <h4 className="cities-title">myCities</h4>
-        <div className="card-deck">
-          <div className="card">
+        <div className="card-group">
+          <div className="cards">
             <FavouriteCity name="Madrid"/>
           </div>
-          <div className="card">
+          <div className="cards">
             <FavouriteCity name="Coventry"/>
           </div>
-          <div className="card">
+          <div className="cards">
             <FavouriteCity name="Belfast"/>
           </div>
-          <div className="card">
+          <div className="cards">
             <FavouriteCity name="Copenhagen"/>
           </div>
         </div>

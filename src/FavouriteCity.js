@@ -7,7 +7,7 @@ export default class FavouriteCity extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loaded: false
+      city: "Lisboa"
     };
 
     let inputValue = `${this.props.name}`;
@@ -45,7 +45,6 @@ export default class FavouriteCity extends Component {
         temperature: `${temperature}ºC`,
         description: response.data.weather[0].description,
         iconUrl: `./images/weather_icons/${icon}.png`,
-        loaded: true
       });
     });
   }
