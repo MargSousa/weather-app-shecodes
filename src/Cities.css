@@ -34,7 +34,10 @@
 }
 
 .cards:hover {
-  background-color:rgba(248, 182, 45, 0.2);
+  background-color:rgb(232, 248, 250);
   border: solid 2px black;
 }
 
+.loading {
+  padding: 30px;
+}

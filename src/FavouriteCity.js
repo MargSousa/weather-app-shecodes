@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loader from "react-loader-spinner";
 import "./FavouriteCity.css"
 import axios from "axios";
 
@@ -7,7 +8,7 @@ export default class FavouriteCity extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      city: "Lisboa"
+      loaded: false
     };
 
     let inputValue = `${this.props.name}`;
@@ -45,6 +46,7 @@ export default class FavouriteCity extends Component {
         temperature: `${temperature}ºC`,
         description: response.data.weather[0].description,
         iconUrl: `./images/weather_icons/${icon}.png`,
+        loaded: true
       });
     });
   }
@@ -720,12 +722,20 @@ export default class FavouriteCity extends Component {
   }
 
   render = () => {
-    return (
-      <div onClick={this.getCityTemp}>
-        <p className="card-title">{this.state.city}</p>
-        <img id="city-icon" src={this.state.iconUrl} alt="Temperature Icon"></img>
-        <p id="city-temp">{this.state.temperature}</p>
-      </div>
-    )
+    if (this.state.loaded) {
+      return (
+        <div onClick={this.getCityTemp}>
+          <p className="card-title">{this.state.city}</p>
+          <img id="city-icon" src={this.state.iconUrl} alt="Temperature Icon"></img>
+          <p id="city-temp">{this.state.temperature}</p>
+        </div>
+      )
+    } else {
+      return (
+        <div className="loading">
+          <Loader type="Circles" color="#18A2B8" height={40} width={40} />
+        </div>
+      )  
+    }
   }
 }
