@@ -19,6 +19,7 @@ export default class TemperatureButton extends Component {
     let temp3min = document.getElementById("min-temp3");
     let temp4min = document.getElementById("min-temp4");
     let temp5min = document.getElementById("min-temp5");
+    let cards = document.querySelectorAll("#city-temp");
 
     if (buttonOne.classList.contains("active")) {
       buttonOne.classList.replace("active","non-active");
@@ -36,6 +37,10 @@ export default class TemperatureButton extends Component {
       let temp8X = temp3min.innerHTML;
       let temp9X = temp4min.innerHTML;
       let temp10X = temp5min.innerHTML;
+      let cardOne = cards[0].innerHTML;
+      let cardTwo = cards[1].innerHTML;
+      let cardThree = cards[2].innerHTML;
+      let cardFour = cards[3].innerHTML;
       let windValue = getWind.substring(0, 2);
       let temperature0S = temp0S.substring(0, 2);
       let temperature0L = temp0L.substring(0, 2);
@@ -49,6 +54,10 @@ export default class TemperatureButton extends Component {
       let temperature8 = temp8X.substring(5, 2);
       let temperature9 = temp9X.substring(5, 2);
       let temperature10 =temp10X.substring(5, 2);
+      let cardTemp1 = cardOne.substring(0, 2);
+      let cardTemp2 = cardTwo.substring(0, 2);
+      let cardTemp3 = cardThree.substring(0, 2);
+      let cardTemp4 = cardFour.substring(0, 2);
       let windUs = Math.round(windValue * 3.6);
       let temp0LF = Math.round(temperature0L  * (9/5) + 32);
       let temp0SF = Math.round(temperature0S  * (9/5) + 32);
@@ -62,6 +71,10 @@ export default class TemperatureButton extends Component {
       let temp8F = Math.round(temperature8  * (9/5) + 32);
       let temp9F = Math.round(temperature9  * (9/5) + 32);
       let temp10F = Math.round(temperature10  * (9/5) + 32);
+      let cardsF1 = Math.round(cardTemp1  * (9/5) + 32);
+      let cardsF2 = Math.round(cardTemp2  * (9/5) + 32);
+      let cardsF3 = Math.round(cardTemp3  * (9/5) + 32);
+      let cardsF4 = Math.round(cardTemp4  * (9/5) + 32);
       wind.innerHTML = `${windUs} mph`;
       tempLarge.innerHTML = `${temp0LF}°F`;
       tempSmall.innerHTML = `${temp0SF}°F`;
@@ -75,6 +88,10 @@ export default class TemperatureButton extends Component {
       temp3min.innerHTML = ` / ${temp8F}°F`;
       temp4min.innerHTML = ` / ${temp9F}°F`;
       temp5min.innerHTML = ` / ${temp10F}°F`;
+      cards[0].innerHTML = `${cardsF1}°F`;
+      cards[1].innerHTML = `${cardsF2}°F`;
+      cards[2].innerHTML = `${cardsF3}°F`;
+      cards[3].innerHTML = `${cardsF4}°F`;
 
     } else {
       buttonOne.classList.replace("non-active","active");
@@ -92,6 +109,10 @@ export default class TemperatureButton extends Component {
       let temp8X = temp3min.innerHTML;
       let temp9X = temp4min.innerHTML;
       let temp10X = temp5min.innerHTML;
+      let cardOne = cards[0].innerHTML;
+      let cardTwo = cards[1].innerHTML;
+      let cardThree = cards[2].innerHTML;
+      let cardFour = cards[3].innerHTML;
       let windValue = getWind.substring(0, 2);
       let temperature0L = temp0L.substring(0, 2);
       let temperature0S = temp0S.substring(0, 2);
@@ -105,19 +126,27 @@ export default class TemperatureButton extends Component {
       let temperature8 = temp8X.substring(5, 2);
       let temperature9 = temp9X.substring(5, 2);
       let temperature10 = temp10X.substring(5, 2);
+      let cardTemp1 = cardOne.substring(0, 2);
+      let cardTemp2 = cardTwo.substring(0, 2);
+      let cardTemp3 = cardThree.substring(0, 2);
+      let cardTemp4 = cardFour.substring(0, 2);
       let windEU = Math.round(windValue / 3.6);
       let temp0LF = Math.round((temperature0L - 32)/(9/5));
       let temp0SF = Math.round((temperature0S - 32)/(9/5));
       let temp1F = Math.round((temperature1 - 32)/(9/5));
-      let temp2F = Math.round((temperature2 - 32)/(9/5))
-      let temp3F = Math.round((temperature3 - 32)/(9/5))
-      let temp4F = Math.round((temperature4 - 32)/(9/5))
-      let temp5F = Math.round((temperature5 - 32)/(9/5))
-      let temp6F = Math.round((temperature6 - 32)/(9/5))
-      let temp7F = Math.round((temperature7 - 32)/(9/5))
-      let temp8F = Math.round((temperature8 - 32)/(9/5))
-      let temp9F = Math.round((temperature9 - 32)/(9/5))
-      let temp10F = Math.round((temperature10 - 32)/(9/5))
+      let temp2F = Math.round((temperature2 - 32)/(9/5));
+      let temp3F = Math.round((temperature3 - 32)/(9/5));
+      let temp4F = Math.round((temperature4 - 32)/(9/5));
+      let temp5F = Math.round((temperature5 - 32)/(9/5));
+      let temp6F = Math.round((temperature6 - 32)/(9/5));
+      let temp7F = Math.round((temperature7 - 32)/(9/5));
+      let temp8F = Math.round((temperature8 - 32)/(9/5));
+      let temp9F = Math.round((temperature9 - 32)/(9/5));
+      let temp10F = Math.round((temperature10 - 32)/(9/5));
+      let cardsF1 = Math.round((cardTemp1 - 32)/(9/5));
+      let cardsF2 = Math.round((cardTemp2 - 32)/(9/5));
+      let cardsF3 = Math.round((cardTemp3 - 32)/(9/5));
+      let cardsF4 = Math.round((cardTemp4 - 32)/(9/5));
       wind.innerHTML = `${windEU} km/h`;
       tempLarge.innerHTML = `${temp0LF}°C`;
       tempSmall.innerHTML = `${temp0SF}°C`;
@@ -131,6 +160,10 @@ export default class TemperatureButton extends Component {
       temp3min.innerHTML = ` / ${temp8F}°C`;
       temp4min.innerHTML = ` / ${temp9F}°C`;
       temp5min.innerHTML = ` / ${temp10F}°C`;
+      cards[0].innerHTML = `${cardsF1}°C`;
+      cards[1].innerHTML = `${cardsF2}°C`;
+      cards[2].innerHTML = `${cardsF3}°C`;
+      cards[3].innerHTML = `${cardsF4}°C`;
     }
   };
   

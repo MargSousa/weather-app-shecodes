@@ -13,10 +13,8 @@ export default class Location extends Component {
     super(props);
     this.state = {
       loaded: false
-    }
-  }
+    };
 
-  componentWillMount() {
     navigator.geolocation.getCurrentPosition(position => {
       let getlatitude = position.coords.latitude;
       let getlongitude = position.coords.longitude;
@@ -692,7 +690,7 @@ export default class Location extends Component {
     );
   }
 
-  render() {
+  render = () => {
     if (this.state.loaded) {
       return (
       <div className="location-section">
