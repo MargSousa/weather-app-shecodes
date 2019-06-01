@@ -167,7 +167,7 @@ export default class TemperatureButton extends Component {
     }
   };
   
-  render() {
+  render = () => {
     return (
       <div className="button-group">
         <div className="temperature-button">
