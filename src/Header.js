@@ -10,7 +10,6 @@ export default class Header extends Component {
     navigator.geolocation.getCurrentPosition(function(position) {
       let getlatitude = position.coords.latitude;
       let getlongitude = position.coords.longitude;
-      //let coords = {latitude: getlatitude, longitude: getlongitude};
 
       let key = `e4e4d6ef596a82924b1c141ba55e4e37`;
       let url = `https://api.openweathermap.org/data/2.5`;
