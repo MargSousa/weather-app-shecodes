@@ -1,0 +1,37 @@
+.week-table {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+}
+
+.week-title {
+  text-align: center;
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.week-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.week-day {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 3px 0px;
+}
+
+.week-min {
+  font-size: 14px;
+}
+
+.week-footer {
+  font-size: 14px;
+  border-top: 1px solid grey;
+  padding-top: 10px;
+}
+
+.week-footer a {
+  color: #17a2b8;
+}

@@ -1,0 +1,141 @@
+.main-header {
+  margin: 0 auto;
+  width: 620px;
+  margin-top: 70px;
+}
+
+.main-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 26px;
+  margin-right: 30px;
+  color: #17a2b8;
+}
+
+.search-input {
+  font-size: 14px;
+  font-style: italic;
+  height: 31px;
+  padding-left: 10px;
+}
+
+.btn-info {
+  margin-left: 2px;
+}
+
+.btn-secondary {
+  margin-left: 6px;
+}
+
+.button {
+	padding: 2px 8px 2px 8px;
+	background-color: #6c757d;
+	color: white;
+  font-size: 14px;
+	float: left;
+	border: 2px solid #98a1a7;
+	outline: none;
+}
+
+.button:active,
+.button:focus {
+	outline: none;
+}
+.button-cel {
+  border-radius: 3px 0px 0px 3px;
+  margin-left: 5px;
+}	
+.button-far {
+	border-radius: 0px 3px 3px 0px;
+}
+
+.active {
+	border: 3px solid #F8B62D;
+	background-color: #F8B62D;
+	color: black;
+	font-weight: bold;
+}
+
+.non-active {
+	color: white;
+	border: 3px solid #6c757d;
+}
+
+.non-active:hover {
+	border: 3px solid rgb(190, 186, 186);
+}
+
+
+@media (max-width: 767px) {  
+  .main-header {
+    margin: 0 auto;
+    margin: 40px 0px 10px 0px;
+    width: 450px;
+    text-align: center;
+  }
+  .main-title {
+    margin: 0px 0px 5px 50px;
+  }
+  .search-input {
+    margin: 0px 0px 0px 20px;
+  }
+  .btn-secondary {
+    margin-left: 90px;
+  }
+}
+
+@media (max-width: 600px) {  
+  .main-header {
+    margin: 0 auto;
+    margin: 40px 0px 10px 0px;
+    width: 310px;
+    text-align: center;
+  }
+  .main-title {
+    margin: 0px 0px 5px 130px;
+  }
+  .search-input {
+    margin: 0px 0px 0px 65px;
+  }
+  .btn-secondary {
+    margin-left: 90px;
+  }
+}
+
+@media (max-width: 420px) {  
+  .main-header {
+    margin: 0 auto;
+    margin: 40px 0px 10px 0px;
+    width: 300px;
+    text-align: center;
+  }
+  .main-title {
+    margin: 0px 0px 5px 75px;
+  }
+  .search-input {
+    margin: 0px 0px 0px 20px;
+  }
+
+  .btn-secondary {
+    margin-left: 35px;
+  }
+}
+
+@media (max-width: 321px) {  
+  .main-header {
+    margin: 0 auto;
+    margin: 40px 0px 10px 0px;
+    width: 260px;
+    text-align: center;
+  }
+  .main-title {
+    margin: 0px 0px 5px 30px;
+  }
+  .search-input {
+    margin: 0px 0px 0px 1px;
+  }
+
+  .btn-secondary {
+    margin-left: 15px;
+  }
+}

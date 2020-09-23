@@ -1,0 +1,51 @@
+.cities-section {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.cards {
+  margin: 0 auto;
+  border: solid 2px #6c757d;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  margin: 10px 15px 10px 15px;
+}
+
+.cities-title {
+  text-align: left;
+  font-weight: bold;
+  font-size: 26px;
+  color: #17a2b8;
+  margin: 20px 0px 0px 15px;
+}
+
+.city-box {
+  margin: 10px 0px 10px 0px;
+}
+
+.card-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-flow: wrap;
+  height: auto;
+}
+
+.cards:hover {
+  background-color:rgb(232, 248, 250);
+  border: solid 2px black;
+  cursor: pointer;
+}
+
+.loading {
+  padding: 30px;
+}
+
+
+@media (max-width: 420px) {
+  .cards {
+    margin: 5px
+  }
+}
