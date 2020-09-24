@@ -46,69 +46,65 @@ function Location(props) {
     return `${getWeekDay}, ${hours}:${minutes} ${dayTime}`;;
   }
 
-  const getLocationData = (position) => {
-    let getLatitude = latitude;
-    let getLongitude = longitude;
-
-    if (getLatitude === 0 && getLongitude === 0 ) {
-      getLatitude = position.coords.latitude;
-      getLongitude = position.coords.longitude;
-    }
-
-    const url = 'https://api.openweathermap.org/data/2.5';
-    const key = 'e4e4d6ef596a82924b1c141ba55e4e37';
-    let pathData = `weather?lat=${getLatitude}&lon=${getLongitude}&appid=${key}&units=${unit}`;
-    const pathForecast = `onecall?lat=${getLatitude}&lon=${getLongitude}&appid=${key}&units=${unit}`;
-
-    if(location) {
-      pathData = `weather?q=${location}&appid=${key}&units=${unit}`
-    }
-
-    axios.get(`${url}/${pathData}`)
-      .then(res => {
-        const results = res.data;
-        const country = isoCountries[results.sys.country];
-        const temperatureNow = Math.round(results.main.temp);
-        const wind = unit === "metric" ? `${Math.round(results.wind.speed * 3.6)} km/h` : `${Math.round(results.wind.speed * 3.6 * 0.62)} mph`;
-        const description = results.weather[0].description;
-        const iconCode = results.weather[0].icon;
-        const precipitation = rainData[iconCode];
-        const weatherCode = iconCodes[iconCode];
-      
-        let weatherIcon = `http://openweathermap.org/img/w/${iconCode}.png`;
-        if (weatherCode) {
-          weatherIcon = require(`../../assets/weather_icons/${weatherCode}.png`)
-        } 
-
-        const time = infoTimeConverter(results.timezone);
-        const sunrise = unixTimeConverter(results.sys.sunrise);
-        const sunset = unixTimeConverter(results.sys.sunset);
-
-        setCity(results.name);
-        setCountry(country);
-        setTime(time);
-        setWind(wind);
-        setPrecipitation(precipitation);
-        setDescription(description);
-        setTemperature(temperatureNow);
-        setSunrise(sunrise);
-        setSunset(sunset);
-        setCurrentIcon(weatherIcon);
-      })
-
-    axios.get(`${url}/${pathForecast}`)
-      .then(res => {
-        const nextDays = res.data.daily.slice(1,6);
-        setWeekForecast(nextDays)
-      })
-      .then(setLoaded(true))
-  }
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
-      getLocationData(position)
+      let getLatitude = latitude;
+      let getLongitude = longitude;
+  
+      if (getLatitude === 0 && getLongitude === 0 ) {
+        getLatitude = position.coords.latitude;
+        getLongitude = position.coords.longitude;
+      }
+  
+      const url = 'https://api.openweathermap.org/data/2.5';
+      const key = 'e4e4d6ef596a82924b1c141ba55e4e37';
+      let pathData = `weather?lat=${getLatitude}&lon=${getLongitude}&appid=${key}&units=${unit}`;
+      const pathForecast = `onecall?lat=${getLatitude}&lon=${getLongitude}&appid=${key}&units=${unit}`;
+  
+      if(location) {
+        pathData = `weather?q=${location}&appid=${key}&units=${unit}`
+      }
+  
+      axios.get(`${url}/${pathData}`)
+        .then(res => {
+          const results = res.data;
+          const country = isoCountries[results.sys.country];
+          const temperatureNow = Math.round(results.main.temp);
+          const wind = unit === "metric" ? `${Math.round(results.wind.speed * 3.6)} km/h` : `${Math.round(results.wind.speed * 3.6 * 0.62)} mph`;
+          const description = results.weather[0].description;
+          const iconCode = results.weather[0].icon;
+          const precipitation = rainData[iconCode];
+          const weatherCode = iconCodes[iconCode];
+        
+          let weatherIcon = `http://openweathermap.org/img/w/${iconCode}.png`;
+          if (weatherCode) {
+            weatherIcon = require(`../../assets/weather_icons/${weatherCode}.png`)
+          } 
+  
+          const time = infoTimeConverter(results.timezone);
+          const sunrise = unixTimeConverter(results.sys.sunrise);
+          const sunset = unixTimeConverter(results.sys.sunset);
+  
+          setCity(results.name);
+          setCountry(country);
+          setTime(time);
+          setWind(wind);
+          setPrecipitation(precipitation);
+          setDescription(description);
+          setTemperature(temperatureNow);
+          setSunrise(sunrise);
+          setSunset(sunset);
+          setCurrentIcon(weatherIcon);
+        })
+  
+      axios.get(`${url}/${pathForecast}`)
+        .then(res => {
+          const nextDays = res.data.daily.slice(1,6);
+          setWeekForecast(nextDays)
+        })
+        .then(setLoaded(true))
     })
-   }, [location, unit])
+   }, [location, unit, latitude, longitude])
   
   if (loaded) {
     return (
