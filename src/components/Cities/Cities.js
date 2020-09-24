@@ -10,7 +10,7 @@ function Cities(props) {
     {id: 1, name: 'Madrid' },
     {id: 2, name: 'Busan' },
     {id: 3, name: 'New York' },
-    {id: 4, name: 'Copenhagen' },
+    {id: 4, name: 'Rome' },
   ];
 
   return (
@@ -19,7 +19,7 @@ function Cities(props) {
       <div className="card-group">
         { cities.map( (city) => 
           <div className="cards" key={city.id}>
-            <FavouriteCity name={city.name} degrees={degrees} unit={unit} />
+            <FavouriteCity name={city.name} degrees={degrees} unit={unit} showInfo={(name) => props.getInfo(name)} />
           </div>
         )}
       </div>

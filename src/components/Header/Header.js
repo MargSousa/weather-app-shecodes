@@ -12,7 +12,6 @@ function Header(props) {
   }
 
   const getCityData = (event) => {
-    console.log("new city")
     event.preventDefault();
     if (inputValue) {
       props.getData(inputValue);
@@ -22,7 +21,6 @@ function Header(props) {
   }
 
   const getCurrentData = () => {
-    console.log("now")
     setInputValue('');
     props.getData();
   }

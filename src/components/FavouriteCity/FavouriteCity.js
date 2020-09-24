@@ -31,7 +31,7 @@ function FavouriteCity(props) {
   }, [name, unit])
 
   const getCityTemp = () => {
-    console.log(name)
+    props.showInfo(name);
   }
 
   if (loaded) {
