@@ -4,131 +4,147 @@
 }
 
 .location-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   border: solid 2px #6c757d;
   border-radius: 20px;
   margin: 0 auto;
   text-align: center;
-  padding: 20px 10px 20px 30px;
+  padding: 20px 20px;
 }
 
 .location {
-  font-size: 20px;
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
-  padding: 5px 0px 0px 20px;
-}
-
-
-.time {
+  font-size: 20px;
+  padding: 0px 0px 0px 20px;
   text-align: left;
+}
+.time {
   font-size: 18px;
   padding: 0px 0px 0px 20px;
+  text-align: left;
 }
 
-.location-sun,
-.location-details {
-  padding-top: 30px;
-  width: 130px;
+.information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
 }
 
 .sunset-icon,
-.sunrise-icon {
-  width: 30%;
-  text-align: center;
-}
-
-.drop-icon {
-  width: 20%;
-}
-
+.sunrise-icon,
 .wind-icon {
-  width: 30%;
+  width: 35px;
+  height: 35px;
   margin-right: 5px;
 }
 
-#location-temperature-s,
-#location-temperature-l {
+.drop-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.local-temperature {
   font-size: 22px;
   font-weight: bold;
 }
 
-#location-description-s,
-#location-description-l {
+.local-description {
   text-transform: capitalize;
   font-size: 16px;
   font-weight: bold;
 }
 
-@media screen and (min-width: 401px) and (max-width: 2000px) {
-  #small-screen {
-    display: none;
+.local-main {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+}
+.local-forecast {
+  display: flex;
+}
+
+.local-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.local {
+  margin-bottom: 20px;
+}
+
+.info {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+@media(max-width: 768px) {
+  .location-box {
+    display: flex;
+    flex-direction: column;
+  }
+  .local-main {
+    width: 100%;
+    justify-content: center;
+  }
+  .local-icon {
+    width: 110px;
+    height: 110px;
+  }
+  .location,
+  .local-temperature {
+    font-size: 18px;
+  }
+  .time {
+    font-size: 16px;
+  }
+  .information {
+    font-size: 16px;
+    height: 30px;
+  } 
+  .local-info {
+    align-items: center;
   }
 }
 
-@media screen and (min-width: 550px) and (max-width: 767px) {
-  #small-screen {
-    display: none;
+@media(max-width: 400px) {
+  .information {
+    font-size: 12px;
+    height: 20px;
   }
-
-  .location-sun,
-  .location-details {
-    padding-top: 60px;
-    display: inline;
+  .local-info {
+    justify-content: start;
   }
-
-  .location-main {
-    display: inline;
-    max-width: 130px;
-    padding-bottom: 40px;
+  .local-icon {
+    width: 90px;
+    height: 90px;
   }
-}
-
-@media (max-width: 550px) {
-  .location-main {
-    margin-bottom: 40px;
+  .location,
+  .local-temperature {
+    font-size: 16px;
   }
-
-  .location-sun,
-  .location-details {
-    padding-top: 60px;
-    display: inline;
+  .time,
+  .local-description {
+    font-size: 14px;
   }
-
-  .location-main {
-    display: inline;
-    max-width: 190px;
-    padding-bottom: 10px;
+  .sunset-icon,
+  .sunrise-icon,
+  .wind-icon {
+    width: 25px;
+    height: 25px;
   }
-}
-
-@media (max-width: 420px) {
-  .location-main {
-    margin: 0 auto;
-    display: inline;
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
-
-  .location {
-    text-align: left;
-    max-width: 260px;
-    margin-bottom: 5px;
-  }
-
-  .location-sun,
-  .location-details {
-    margin: 0 auto;
-    padding: 40px 0px 30px 0px;
-  }
-
-  #location-icon {
-    width: 90%;
-  }
-
-  #large-screen {
-    display: none;
-  }
-
-  #small-screen {
-    display: block;
+  .drop-icon {
+    width: 13px;
+    height: 13px;
+    margin-right: 12px;
   }
 }

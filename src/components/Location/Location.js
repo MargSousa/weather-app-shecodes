@@ -114,49 +114,40 @@ function Location(props) {
     return (
     <div className="location-section">
       <div className="location-box">
-          <div className="row">
-            <div className="col-sm">
-              <div className="row location">{city}, {country}</div>
-              <div className="row time" >{time}</div>
-              <div className="row">
-                <div className="col-sm location-main" id="small-screen">
-                  <img id="location-icon-s" src={currentIcon} alt="Weather Icon"/>
-                  <div id="location-temperature-s">{temperature}{degrees}</div>
-                  <div id="location-description-s">{description}</div>
-                </div>
-                <div className="col-sm location-sun">
-                  <div>
-                    <img className="sunrise-icon" src={SunriseIcon} alt="Sunrise Icon"/>
-                    {sunrise}
-                  </div>
-                  <div>
-                    <img className="sunset-icon" src={SunsetIcon} alt="Sunset Icon"/>
-                    {sunset}
-                  </div>
-                  <div className="location-details">
-                    <div>
-                      <img className="drop-icon" src={PrecipitationIcon} alt="Precipitation Icon"/> 
-                      {precipitation}
-                    </div>
-                    <div>
-                      <img className="wind-icon" src={WindIcon} alt="Wind Icon"/>
-                      {wind}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-sm location-main" id="large-screen">
-                  <img id="location-icon-l" src={currentIcon} alt="Current Weather Icon"/>
-                  <div id="location-temperature-l">{temperature}{degrees}</div>
-                  <div id="location-description-l">{description}</div>
-                </div>
+        <div className="local-main">
+          <div>
+              <div className="location">{city}, {country}</div>
+              <div className="time" >{time}</div>
+          </div>
+          <div className="local-info">
+            <div className="info">
+              <div className="information">
+                <img className="sunrise-icon" src={SunriseIcon} alt="Sunrise"/> {sunrise}
+              </div>
+              <div className="information">
+                <img className="sunset-icon" src={SunsetIcon} alt="Sunset"/> {sunset}
+              </div>
+              <div className="information">
+                <img className="drop-icon" src={PrecipitationIcon} alt="Precipitation"/> {precipitation}
+              </div>
+              <div className="information">
+                <img className="wind-icon" src={WindIcon} alt="Wind"/> {wind}
               </div>
             </div>
-            <div className="col-sm week">
-              <WeeklyForecast forecast={weekForecast} degrees={degrees} />
+            <div className="local">
+              <img className="local-icon" src={currentIcon} alt="Weather Icon"/>
+              <div className="local-temperature">{temperature}{degrees}</div>
+              <div className="local-description">{description}</div>
             </div>
           </div>
-      </div>   
+        </div>
+        <div className="local-forecast">
+          <WeeklyForecast forecast={weekForecast} degrees={degrees} />
+        </div>
+      </div>
     </div>
+
+      
   )
   } else {
     return (

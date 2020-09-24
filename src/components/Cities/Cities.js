@@ -10,7 +10,7 @@ function Cities(props) {
     {id: 1, name: 'Madrid' },
     {id: 2, name: 'Busan' },
     {id: 3, name: 'New York' },
-    {id: 4, name: 'Rome' },
+    {id: 4, name: 'Veneza' },
   ];
 
   return (
