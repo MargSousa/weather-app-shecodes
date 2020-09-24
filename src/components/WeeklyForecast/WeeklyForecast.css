@@ -1,0 +1,53 @@
+.week-table {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+}
+
+.week-title {
+  text-align: center;
+  border-bottom: 1px solid grey;
+  padding-bottom: 2px;;
+  margin-bottom: 2px;
+}
+
+.week-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.week-day {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 3px 0px;
+}
+
+.week-min {
+  font-size: 14px;
+}
+
+.week-footer {
+  margin-top: 2px;
+  font-size: 14px;
+  border-top: 1px solid grey;
+  padding-top: 10px;
+}
+
+.week-footer a {
+  color: #17a2b8;
+}
+
+
+@media(max-width: 400px) {
+  .week-footer {
+    font-size: 12px;
+  }
+  .week-day {
+    font-size: 14px;
+  }
+  .week-day {
+    padding: 0px 0px;
+  }
+}

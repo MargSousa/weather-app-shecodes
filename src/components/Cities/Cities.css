@@ -4,7 +4,10 @@
 }
 
 .cards {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
   border: solid 2px #6c757d;
   border-radius: 15px;
   text-align: center;
@@ -36,6 +39,7 @@
 .cards:hover {
   background-color:rgb(232, 248, 250);
   border: solid 2px black;
+  cursor: pointer;
 }
 
 .loading {

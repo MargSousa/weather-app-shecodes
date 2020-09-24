@@ -1,0 +1,150 @@
+.location-section {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.location-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: solid 2px #6c757d;
+  border-radius: 20px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0px 0px 0px 20px;
+  text-align: left;
+}
+.time {
+  font-size: 18px;
+  padding: 0px 0px 0px 20px;
+  text-align: left;
+}
+
+.information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.sunset-icon,
+.sunrise-icon,
+.wind-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+}
+
+.drop-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.local-temperature {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.local-description {
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.local-main {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+}
+.local-forecast {
+  display: flex;
+}
+
+.local-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.local {
+  margin-bottom: 20px;
+}
+
+.info {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+@media(max-width: 768px) {
+  .location-box {
+    display: flex;
+    flex-direction: column;
+  }
+  .local-main {
+    width: 100%;
+    justify-content: center;
+  }
+  .local-icon {
+    width: 110px;
+    height: 110px;
+  }
+  .location,
+  .local-temperature {
+    font-size: 18px;
+  }
+  .time {
+    font-size: 16px;
+  }
+  .information {
+    font-size: 16px;
+    height: 30px;
+  } 
+  .local-info {
+    align-items: center;
+  }
+}
+
+@media(max-width: 400px) {
+  .information {
+    font-size: 12px;
+    height: 20px;
+  }
+  .local-info {
+    justify-content: start;
+  }
+  .local-icon {
+    width: 90px;
+    height: 90px;
+  }
+  .location,
+  .local-temperature {
+    font-size: 16px;
+  }
+  .time,
+  .local-description {
+    font-size: 14px;
+  }
+  .sunset-icon,
+  .sunrise-icon,
+  .wind-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .drop-icon {
+    width: 13px;
+    height: 13px;
+    margin-right: 12px;
+  }
+}
